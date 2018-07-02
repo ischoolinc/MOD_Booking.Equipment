@@ -1,0 +1,13 @@
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\bin\Debug\Ischool.Booking.Equipment.dll
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\bin\Debug\Ischool.Booking.Equipment.pdb
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csprojResolveAssemblyReference.cache
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.BookingEquipmentAdmin.resources
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.EditUnitForm.resources
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.ManagementUnit.resources
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csproj.GenerateResource.Cache
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.dll
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.pdb
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.Properties.Resources.resources
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.SetUnitAdmin.resources
+C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.AddUnitAdmin.resources
