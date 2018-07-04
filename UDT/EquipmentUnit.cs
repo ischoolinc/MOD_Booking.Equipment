@@ -10,7 +10,7 @@ namespace Ischool.Booking.Equipment.UDT
     /// <summary>
     /// 設備管理單位
     /// </summary>
-    [TableName("ischool.booking.equip_unit")]
+    [TableName("ischool.booking.equip_units")]
     class EquipmentUnit:ActiveRecord
     {
         /// <summary>

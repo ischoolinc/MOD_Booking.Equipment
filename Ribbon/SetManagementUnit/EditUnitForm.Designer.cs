@@ -119,6 +119,7 @@
             this.DoubleBuffered = true;
             this.Name = "EditUnitForm";
             this.Text = "EditUnitForm";
+            this.Load += new System.EventHandler(this.EditUnitForm_Load);
             this.ResumeLayout(false);
 
         }

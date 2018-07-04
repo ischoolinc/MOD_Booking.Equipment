@@ -21,19 +21,22 @@ namespace Ischool.Booking.Equipment
         public EditUnitForm(string mode)
         {
             InitializeComponent();
-
-            AccessHelper access = new AccessHelper();
             _mode = mode; 
+        }
 
-            if (mode == "新增")
+        private void EditUnitForm_Load(object sender, EventArgs e)
+        {
+            AccessHelper access = new AccessHelper();
+
+            if (_mode == "新增")
             {
-
+                //畫面不用初始化
             }
             else
             {
-                _unitID = mode;
+                _unitID = _mode;
                 string condition = string.Format("uid = {0}", _unitID);
-                unitNameTbx.Text =  access.Select<UDT.EquipmentUnit>(condition)[0].Name;
+                unitNameTbx.Text = access.Select<UDT.EquipmentUnit>(condition)[0].Name;
                 unitNameTbx.Tag = _unitID;
             }
 
@@ -51,24 +54,10 @@ namespace Ischool.Booking.Equipment
 
             if (_mode == "新增")
             {
-                string sql = string.Format(@"
-INSERT INTO $ischool.booking.equip_unit(
-    name
-    , create_time
-    , created_by
-)
-VALUES(
-    '{0}'
-    , '{1}'
-    , '{2}'
-)
-                ", unitNameTbx.Text,DateTime.Now.ToShortDateString(),Actor.Account);
-
                 try
                 {
-                    up.Execute(sql);
+                    DAO.UnitDAO.InsertUnitInfo(unitNameTbx.Text,DateTime.Now.ToShortDateString(),Actor.Account);
                     MsgBox.Show("儲存成功!");
-
                     this.Close();
                 }
                 catch(Exception ex)
@@ -78,22 +67,10 @@ VALUES(
             }
             else
             {
-                string sql = string.Format(@"
-UPDATE 
-    $ischool.booking.equip_unit
-SET
-    name = '{0}'
-    , create_time = '{1}'
-    , created_by = '{2}'
-WHERE
-    uid = {3}
-                ",unitNameTbx.Text,DateTime.Now.ToShortDateString(),Actor.Account,_unitID);
-
                 try
                 {
-                    up.Execute(sql);
+                    DAO.UnitDAO.UpdateUnitInfo(unitNameTbx.Text,DateTime.Now.ToShortDateString(),Actor.Account, _unitID);       
                     MsgBox.Show("儲存成功!");
-
                     this.Close();
                 }
                 catch(Exception ex)
@@ -101,11 +78,6 @@ WHERE
                     MsgBox.Show(ex.Message);
                 }
             }
-        }
-
-        private void leaveBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void unitNameTbx_TextChanged(object sender, EventArgs e)
@@ -128,5 +100,11 @@ WHERE
                 saveBtn.Enabled = true;
             }
         }
+
+        private void leaveBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

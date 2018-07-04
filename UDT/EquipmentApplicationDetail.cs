@@ -64,6 +64,6 @@ namespace Ischool.Booking.Equipment.UDT
         /// 取消原因
         /// </summary>
         [Field(Field = "cancel_reason", Indexed = false)]
-        public int CancelReason { get; set; }
+        public string CancelReason { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Ischool.Booking.Equipment.UDT
     /// <summary>
     /// 設備預約申請
     /// </summary>
-    [TableName("ischool.booking.equip_application")]
+    [TableName("ischool.booking.equip_applications")]
     class EquipmentApplication : ActiveRecord
     {
         /// <summary>

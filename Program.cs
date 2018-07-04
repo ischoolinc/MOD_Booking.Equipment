@@ -11,6 +11,8 @@ using FISCA.Presentation.Controls;
 using K12.Data;
 using FISCA.Data;
 using System.Data;
+using FISCA.Permission;
+using Campus.DocumentValidator;
 
 namespace Ischool.Booking.Equipment
 {
@@ -26,9 +28,15 @@ namespace Ischool.Booking.Equipment
         /// </summary>
         static public string _roleAdminID;
 
+        Actor actor = Actor.Instance;
+
         [MainMethod()]
         static public void Main()
         {
+            //驗證規則
+            FactoryProvider.FieldFactory.Add(new EquipmentFieldValidatorFactory());
+            FactoryProvider.RowFactory.Add(new EquipmentRowValidatorFactory());
+
             #region Init UDT
             ConfigData cd = K12.Data.School.Configuration["設備預約模組載入設定"];
 
@@ -44,7 +52,7 @@ namespace Ischool.Booking.Equipment
             //檢查是否為布林
             bool.TryParse(cd[name], out checkUDT);
 
-            if (true) //!checkUDT
+            if (!checkUDT) //
             {
                 AccessHelper access = new AccessHelper();
                 access.Select<UDT.Equipment>("UID = '00000'");
@@ -280,17 +288,32 @@ namespace Ischool.Booking.Equipment
             {
                 string roleName = "設備預約管理者";
                 bool _checkAdminrole = CheckRole(roleName);
-                // 如果管理者角色不存在，建立角色
+                // 如果管理者角色不存在，建立角色並取回角色ID
                 if (!_checkAdminrole)
                 {
                     string description = "";
                     string sqlInsert = string.Format(@"
-INSERT INTO _role(role_name , description, permission) VALUES ('{0}','{1}','{2}' )
+WITH insert_role AS(
+    INSERT INTO _role(
+        role_name 
+        , description
+        , permission
+    ) 
+    VALUES (
+        '{0}'
+        ,'{1}'
+        ,'{2}' 
+    )
+    RETURNING _role.id
+)
+SELECT * FROM insert_role
+
                     ", roleName, description, permission);
 
-                    UpdateHelper up = new UpdateHelper();
-                    up.Execute(sqlInsert);
+                    QueryHelper qh = new QueryHelper();
+                    DataTable dt = qh.Select(sqlInsert);
 
+                    _roleAdminID = "" + dt.Rows[0]["id"];
                 }
             }
             #endregion
@@ -299,24 +322,37 @@ INSERT INTO _role(role_name , description, permission) VALUES ('{0}','{1}','{2}'
             {
                 string roleName = "設備預約模組專用";
                 bool _checkrole = CheckRole(roleName);
-                // 如果專用角色不存在，建立角色
+                // 如果專用角色不存在，建立角色並取回角色ID
                 if (!_checkrole)
                 {
                     string description = "";
                     string sqlInsert = string.Format(@"
-INSERT INTO _role(role_name , description, permission) VALUES ('{0}','{1}','{2}' )
+WITH insert_role AS(
+    INSERT INTO _role(
+        role_name 
+        , description
+        , permission
+    ) VALUES (
+        '{0}'
+        ,'{1}'
+        ,'{2}' 
+    )
+    RETURNING _role.id
+)
+SELECT * FROM insert_role
                     ", roleName, description, permission);
 
-                    UpdateHelper up = new UpdateHelper();
-                    up.Execute(sqlInsert);
-
+                    QueryHelper qh = new QueryHelper();
+                    DataTable dt = qh.Select(sqlInsert);
+                    _roleID = "" + dt.Rows[0]["id"];
+                    
                 }
             }
             #endregion
 
             // 取得登入帳號與身分
             Actor actor = new Actor();
-            string identity = Actor.Identity;
+            //string identity = Actor.Identity;
 
             // 建立設備預約分頁
             MotherForm.AddPanel(BookingEquipmentAdmin.Instance);
@@ -328,10 +364,10 @@ INSERT INTO _role(role_name , description, permission) VALUES ('{0}','{1}','{2}'
             settingItem["設定"].Size = RibbonBarButton.MenuButtonSize.Large;
             settingItem["設定"].Image = Properties.Resources.sandglass_unlock_64;
 
-            //settingItem["設定"]["場地管理單位"].Enable = Permissions.設定場地管理單位權限;
+            settingItem["設定"]["設備管理單位"].Enable = Permissions.設定設備管理單位權限;
             settingItem["設定"]["設備管理單位"].Click += delegate
             {
-                if (identity == "系統管理員")
+                if (actor.isSysAdmin())
                 {
                     ManagementUnit form = new ManagementUnit();
                     form.ShowDialog();
@@ -343,25 +379,35 @@ INSERT INTO _role(role_name , description, permission) VALUES ('{0}','{1}','{2}'
 
             };
 
+            settingItem["設定"]["單位管理員"].Enable = Permissions.設定設備單位權管理員權限;
             settingItem["設定"]["單位管理員"].Click += delegate
             {
-                if (identity == "系統管理員")
+                if (actor.isSysAdmin())
                 {
                     SetUnitAdmin form = new SetUnitAdmin();
                     form.ShowDialog();
                 }
                 else
                 {
-                    MsgBox.Show("此帳號沒有設定設備管理單位權限");
+                    MsgBox.Show("此帳號沒有設定設備單位管理員權限");
                 }
             };
 
             settingItem["管理"].Size = RibbonBarButton.MenuButtonSize.Large;
             settingItem["管理"].Image = Properties.Resources.network_lock_64;
 
+            settingItem["管理"]["管理設備"].Enable = Permissions.管理設備權限;
             settingItem["管理"]["管理設備"].Click += delegate
             {
-
+                if (actor.isSysAdmin() || actor.isUnitAdmin())
+                {
+                    ManageEquipment form = new ManageEquipment();
+                    form.ShowDialog();
+                }
+                else
+                {
+                    MsgBox.Show("此帳號沒有管理設備權限");
+                }
             };
 
             #endregion
@@ -373,37 +419,75 @@ INSERT INTO _role(role_name , description, permission) VALUES ('{0}','{1}','{2}'
             dataItem["匯出"].Size = RibbonBarButton.MenuButtonSize.Large;
             dataItem["匯出"].Image = Properties.Resources.Export_Image;
 
+            dataItem["匯出"]["設備清單"].Enable = Permissions.匯出設備清單權限;
             dataItem["匯出"]["設備清單"].Click += delegate 
             {
-
+                if (actor.isSysAdmin() || actor.isUnitAdmin())
+                {
+                    ExportEquipmentForm form = new ExportEquipmentForm();
+                    form.ShowDialog();
+                }
+                else
+                {
+                    MsgBox.Show("此帳號沒有匯出設備清單權限");
+                }
             };
 
             dataItem["匯入"].Size = RibbonBarButton.MenuButtonSize.Large;
             dataItem["匯入"].Image = Properties.Resources.Import_Image;
 
+            dataItem["匯入"]["設備清單"].Enable = Permissions.匯入設備清單權限;
             dataItem["匯入"]["設備清單"].Click += delegate 
             {
-
+                if (actor.isSysAdmin() || actor.isUnitAdmin())
+                {
+                    new ImportEquipmentData().Execute();
+                }
+                else
+                {
+                    MsgBox.Show("此帳號沒有匯入設備清單權限");
+                }
             };
 
             dataItem["報表"].Size = RibbonBarButton.MenuButtonSize.Large;
             dataItem["報表"].Image = Properties.Resources.Report;
 
+            dataItem["報表"]["統計設備使用狀況"].Enable = Permissions.統計設備使用狀況權限;
             dataItem["報表"]["統計設備使用狀況"].Click += delegate 
             {
-
+                if (actor.isSysAdmin() || actor.isUnitAdmin())
+                {
+                    StatisticalTableForm form = new StatisticalTableForm();
+                    form.ShowDialog();
+                }
+                else
+                {
+                    MsgBox.Show("此帳號沒有列印報表權限");
+                }
             };
 
             #endregion
 
             #region 權限管理
 
-
+            Catalog detail = new Catalog();
+            detail = RoleAclSource.Instance["設備預約"]["功能按鈕"];
+            detail.Add(new RibbonFeature(Permissions.設備管理單位, "設定設備管理單位"));
+            detail.Add(new RibbonFeature(Permissions.設備單位管理員, "設定設備單位管理員"));
+            detail.Add(new RibbonFeature(Permissions.管理設備, "管理設備"));
+            detail.Add(new RibbonFeature(Permissions.匯出設備清單, "匯出設備清單"));
+            detail.Add(new RibbonFeature(Permissions.匯入設備清單, "匯入設備清單"));
+            detail.Add(new RibbonFeature(Permissions.統計設備使用狀況, "統計設備使用狀況"));
 
             #endregion
 
         }
 
+        /// <summary>
+        /// 檢查設備預約模組專用角色是否存在
+        /// </summary>
+        /// <param name="roleName"></param>
+        /// <returns></returns>
         public static bool CheckRole(string roleName)
         {
             string sql = string.Format("SELECT * FROM _role WHERE role_name = '{0}' ", roleName);

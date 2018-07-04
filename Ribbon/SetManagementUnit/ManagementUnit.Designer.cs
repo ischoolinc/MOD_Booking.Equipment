@@ -30,13 +30,13 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addBtn = new DevComponents.DotNetBar.ButtonX();
             this.updateBtn = new DevComponents.DotNetBar.ButtonX();
             this.deleteBtn = new DevComponents.DotNetBar.ButtonX();
             this.leaveBtn = new DevComponents.DotNetBar.ButtonX();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +72,26 @@
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(355, 338);
             this.dataGridViewX1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "單位名稱";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 110;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "建立者";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "建立日期";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // addBtn
             // 
@@ -129,26 +149,6 @@
             this.leaveBtn.Text = "離開";
             this.leaveBtn.Click += new System.EventHandler(this.leaveBtn_Click);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "單位名稱";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 110;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "建立者";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "建立日期";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
             // ManagementUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -162,6 +162,7 @@
             this.DoubleBuffered = true;
             this.Name = "ManagementUnit";
             this.Text = "設備管理單位";
+            this.Load += new System.EventHandler(this.ManagementUnit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 

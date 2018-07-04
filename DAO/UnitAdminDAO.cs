@@ -107,7 +107,7 @@ FROM
             else
             {
                 sql = string.Format(@"
-WITN insert_unit_admin AS(
+WITH insert_unit_admin AS(
     INSERT INTO $ischool.booking.equip_unit_admin(
         account
         , ref_unit_id
@@ -124,21 +124,7 @@ WITN insert_unit_admin AS(
         , '{4}'
         , '{5}'
     )
-) ,insert_login AS(
-    INSERT INTO _login(
-        login_name
-        , password
-        , sys_admin
-        , account_type
-    )
-    VALUES(
-        '{0}'
-        , '1234'
-        , '0'
-        , 'greening'
-    )
-    RETURNING _login.id
-)
+) 
 INSERT INTO _lr_belong(
     _login_id
     , _role_id
@@ -146,9 +132,7 @@ INSERT INTO _lr_belong(
 SELECT
     {3}
     , {6}
-FROM
-    insert_login
-                    ", unitID, teacherID, teacherAccount, loginID, createTime, createdBy);
+                    ", teacherAccount, unitID, teacherID, loginID, createTime, createdBy,Program._roleID);
             }
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);
@@ -183,5 +167,22 @@ WHERE
             return dt;
         }
 
+        /// <summary>
+        /// 刪除單位管理員
+        /// </summary>
+        /// <param name="unitAdminID"></param>
+        public static void DeleteUnitAdmin(string unitAdminID)
+        {
+            string sql = string.Format(@"
+DELETE
+FROM
+    $ischool.booking.equip_unit_admin
+WHERE
+    uid = {0}
+                    ", unitAdminID);
+
+            UpdateHelper up = new UpdateHelper();
+            up.Execute(sql);
+        }
     }
 }

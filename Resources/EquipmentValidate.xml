@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="format.xsl" ?>
+<ValidateRule>
+  <DuplicateDetection>
+    <Detector Name="PrimaryKey">
+      <Field Name="財產編號"/>
+    </Detector>
+  </DuplicateDetection>
+  <FieldList>
+    <Field Required="True" Name="設備名稱">
+      <Validate AutoCorrect="False" Description="「設備名稱」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+    </Field>
+    <Field Required="False" Name="類別" Description="設備類別">
+    </Field>
+    <Field Required="True" Name="財產編號" Description="財產編號為鍵值">
+    	<Validate AutoCorrect="False" Description="「財產編號」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+    </Field>
+    <Field Required="False" Name="廠牌" Description="廠牌名稱">
+    </Field>
+    <Field Required="False" Name="型號" Description="設備型號">
+    </Field>
+    <Field Required="False" Name="設備狀態">
+    	<Validate AutoCorrect="False" Description="「設備狀態」只允許：良好、維修中、遺失、報廢。" ErrorType="Error" Validator="設備狀態列舉" When=""/>
+    </Field>
+    <Field Required="False" Name="未取用解除預約時間">
+    	<Validate AutoCorrect="False" Description="「未取用解除預約時間(分)」必須是數字。" ErrorType="Error" Validator="IntParse"/>
+    </Field>
+    <Field Required="False" Name="放置位置" Description="設備放置位置">
+    </Field>
+    <Field Required="True" Name="管理單位名稱">
+    	<Validate AutoCorrect="False" Description="「管理單位名稱」必須已存在系統。" ErrorType="Error" Validator="管理單位是否存在系統"/>
+    </Field>
+  </FieldList>
+  <ValidatorList>
+    <FieldValidator Name="管理單位是否存在系統" Type="CHECKUNITINISCHOOL"/>
+    <FieldValidator Name="不可空白" Type="CHECKSTRING"/>
+    <FieldValidator Name="IntParse" Type="INTPARSE"/>
+    <FieldValidator Name="設備狀態列舉" Type="Enumeration">
+      <Item Value="良好"/>
+      <Item Value="維修中"/>
+      <Item Value="遺失"/>
+      <Item Value="報廢"/>
+    </FieldValidator>
+  </ValidatorList>
+  <RowValidate>
+  </RowValidate>
+  <ConditionList/>
+</ValidateRule>

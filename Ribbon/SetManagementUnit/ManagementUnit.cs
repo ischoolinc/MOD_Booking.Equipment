@@ -17,24 +17,18 @@ namespace Ischool.Booking.Equipment
         public ManagementUnit()
         {
             InitializeComponent();
+        }
 
+        private void ManagementUnit_Load(object sender, EventArgs e)
+        {
             ReloadDataGridview();
         }
 
         public void ReloadDataGridview()
         {
             dataGridViewX1.Rows.Clear();
-            string sql = @"
-SELECT
-    unit.*
-    , teacher.teacher_name
-FROM
-    $ischool.booking.equip_unit AS unit
-    LEFT OUTER JOIN teacher
-        ON unit.created_by = teacher.st_login_name
-";
-            QueryHelper qh = new QueryHelper();
-            DataTable dt = qh.Select(sql);
+
+            DataTable dt = DAO.UnitDAO.GetUnitInfo();
 
             foreach (DataRow row in dt.Rows)
             {
@@ -90,20 +84,9 @@ FROM
                 if (result == DialogResult.Yes)
                 {
                     unitID = "" + dataGridViewX1.SelectedRows[0].Tag;
-
-                    string sql = string.Format(@"
-DELETE 
-FROM 
-    $ischool.booking.equip_unit
-WHERE
-    uid = {0}
-                        ",unitID);
-
-                    UpdateHelper up = new UpdateHelper();
-
                     try
                     {
-                        up.Execute(sql);
+                        DAO.UnitDAO.DeleteUnitInfo(unitID);
                         MsgBox.Show("資料刪除成功!");
                         ReloadDataGridview();
                     }
@@ -120,5 +103,7 @@ WHERE
         {
             this.Close();
         }
+
+        
     }
 }

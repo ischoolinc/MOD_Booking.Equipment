@@ -61,6 +61,29 @@ namespace Ischool.Booking.Equipment.Properties {
         }
         
         /// <summary>
+        ///   查詢類似 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;format.xsl&quot; ?&gt;
+        ///&lt;ValidateRule&gt;
+        ///  &lt;DuplicateDetection&gt;
+        ///    &lt;Detector Name=&quot;PrimaryKey&quot;&gt;
+        ///      &lt;Field Name=&quot;財產編號&quot;/&gt;
+        ///    &lt;/Detector&gt;
+        ///  &lt;/DuplicateDetection&gt;
+        ///  &lt;FieldList&gt;
+        ///    &lt;Field Required=&quot;True&quot; Name=&quot;設備名稱&quot;&gt;
+        ///      &lt;Validate AutoCorrect=&quot;False&quot; Description=&quot;「設備名稱」不允許空白。&quot; ErrorType=&quot;Error&quot; Validator=&quot;不可空白&quot; When=&quot;&quot;/&gt;
+        ///    &lt;/Field&gt;
+        ///    &lt;Field Required=&quot;False&quot; Name=&quot;類別&quot; Description=&quot;設備類別&quot;&gt;
+        ///    &lt;/Field&gt;
+        ///    &lt;Field Required= [字串的其餘部分已遭截斷]&quot;; 的當地語系化字串。
+        /// </summary>
+        internal static string EquipmentValidate {
+            get {
+                return ResourceManager.GetString("EquipmentValidate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
         internal static System.Drawing.Bitmap Export_Image {
@@ -107,6 +130,26 @@ namespace Ischool.Booking.Equipment.Properties {
             get {
                 object obj = ResourceManager.GetObject("sandglass_unlock_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap wizard1_BackgroundImage {
+            get {
+                object obj = ResourceManager.GetObject("wizard1_BackgroundImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
+        internal static byte[] 統計設備報表樣板 {
+            get {
+                object obj = ResourceManager.GetObject("統計設備報表樣板", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

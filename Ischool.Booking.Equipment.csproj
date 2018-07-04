@@ -31,6 +31,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9a40d5a4b59e5256, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\Library\Aspose.Cells.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.DocumentValidator, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.DocumentValidator.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Import, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.Import.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\DevComponents.DotNetBar2.dll</HintPath>
@@ -49,6 +64,16 @@
     <Reference Include="FISCA.Data, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.LogAgent, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\FISCA.LogAgent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Permission, Version=1.2.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\Library\FISCA.Permission.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Presentation, Version=1.1.0.19, Culture=neutral, processorArchitecture=MSIL">
@@ -77,17 +102,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actor.cs" />
+    <Compile Include="DAO\Actor.cs" />
     <Compile Include="BookingEquipmentAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="DAO\EquipmentDAO.cs" />
+    <Compile Include="DAO\StatisticalReportDAO.cs" />
     <Compile Include="DAO\UnitAdminDAO.cs" />
+    <Compile Include="DAO\UnitDAO.cs" />
+    <Compile Include="DAO\UnitInfo.cs" />
+    <Compile Include="DAO\Units.cs" />
+    <Compile Include="Permissions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\ExportEquipment\ExportEquipmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\ExportEquipment\ExportEquipmentForm.Designer.cs">
+      <DependentUpon>ExportEquipmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\ImportEquipment\ImportEquipmentData\ImportEquipmentData.cs" />
+    <Compile Include="Ribbon\ImportEquipment\ImportEquipmentData\ImportEquipmentLog.cs" />
+    <Compile Include="Ribbon\ImportEquipment\ValidationRule\FieldValidator\CheckInt.cs" />
+    <Compile Include="Ribbon\ImportEquipment\ValidationRule\FieldValidator\CheckString.cs" />
+    <Compile Include="Ribbon\ImportEquipment\ValidationRule\FieldValidator\CheckUnitInIschool.cs" />
+    <Compile Include="Ribbon\ImportEquipment\ValidationRule\FieldValidator\EquipmentFieldValidatorFactory.cs" />
+    <Compile Include="Ribbon\ImportEquipment\ValidationRule\FieldValidator\EquipmentRowValidatorFactory.cs" />
+    <Compile Include="Ribbon\ManageEquipment\EditEquipmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\ManageEquipment\EditEquipmentForm.Designer.cs">
+      <DependentUpon>EditEquipmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\ManageEquipment\ManageEquipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\ManageEquipment\ManageEquipment.Designer.cs">
+      <DependentUpon>ManageEquipment.cs</DependentUpon>
     </Compile>
     <Compile Include="Ribbon\SetManagementUnit\EditUnitForm.cs">
       <SubType>Form</SubType>
@@ -113,6 +169,12 @@
     <Compile Include="Ribbon\SetUnitAdmin\SetUnitAdmin.Designer.cs">
       <DependentUpon>SetUnitAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ribbon\StatisticalTable\StatisticalTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\StatisticalTable\StatisticalTableForm.Designer.cs">
+      <DependentUpon>StatisticalTableForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UDT\Equipment.cs" />
     <Compile Include="UDT\EquipmentApplication.cs" />
     <Compile Include="UDT\EquipmentApplicationDetail.cs" />
@@ -120,7 +182,6 @@
     <Compile Include="UDT\EquipmentUnit.cs" />
     <Compile Include="UDT\EquipmentUnitAdmin.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Library\Aspose.Cells.dll" />
     <Content Include="Library\Aspose.Cells.xml" />
@@ -190,11 +251,14 @@
     <Content Include="Library\SmartSchool.Customization.PlugIn.xml" />
     <Content Include="Library\SmartSchool.ErrorReporting.dll" />
     <Content Include="Library\SmartSchool.ErrorReporting.xml" />
+    <None Include="Resources\EquipmentValidate.xml" />
+    <None Include="Resources\wizard1.BackgroundImage.png" />
     <None Include="Resources\Import.Image.png" />
     <None Include="Resources\Export.Image.png" />
     <None Include="Resources\Report.png" />
     <None Include="Resources\network_lock_64.png" />
     <None Include="Resources\sandglass_unlock_64.png" />
+    <None Include="Resources\統計設備報表樣板.xls" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\FISCA.dll.config" />
@@ -206,6 +270,15 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\ExportEquipment\ExportEquipmentForm.resx">
+      <DependentUpon>ExportEquipmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\ManageEquipment\EditEquipmentForm.resx">
+      <DependentUpon>EditEquipmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\ManageEquipment\ManageEquipment.resx">
+      <DependentUpon>ManageEquipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ribbon\SetManagementUnit\EditUnitForm.resx">
       <DependentUpon>EditUnitForm.cs</DependentUpon>
@@ -219,6 +292,10 @@
     <EmbeddedResource Include="Ribbon\SetUnitAdmin\SetUnitAdmin.resx">
       <DependentUpon>SetUnitAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\StatisticalTable\StatisticalTableForm.resx">
+      <DependentUpon>StatisticalTableForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

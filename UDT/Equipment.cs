@@ -50,7 +50,7 @@ namespace Ischool.Booking.Equipment.UDT
         public string ModelNo { get; set; }
 
         /// <summary>
-        /// 設備狀態 可預約，已借出，維修中，遺失，報廢。
+        /// 設備狀態 可預約，維修中，遺失，報廢。
         /// </summary>
         [Field(Field = "status", Indexed = false)]
         public string Status { get; set; }

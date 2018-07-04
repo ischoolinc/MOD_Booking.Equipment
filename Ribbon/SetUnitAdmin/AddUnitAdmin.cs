@@ -90,7 +90,7 @@ namespace Ischool.Booking.Equipment
 
         private void dataGridViewX1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1)
+            if (e.RowIndex > -1 && e.ColumnIndex ==5)
             {
                 string teacherName = "" + dataGridViewX1.Rows[e.RowIndex].Cells[0].Value;
                 string teacherAccount = "" + dataGridViewX1.Rows[e.RowIndex].Cells[3].Value;
@@ -109,7 +109,6 @@ namespace Ischool.Booking.Equipment
                     string loginID = Actor.GetLoginIDByAccount(teacherAccount);
                     string createTime = DateTime.Now.ToShortDateString();
                     string createdBy = Actor.Account;
-                    string sql = "";
 
                     try
                     {

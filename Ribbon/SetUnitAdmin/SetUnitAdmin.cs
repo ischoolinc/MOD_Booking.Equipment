@@ -22,7 +22,10 @@ namespace Ischool.Booking.Equipment
         public SetUnitAdmin()
         {
             InitializeComponent();
+        }
 
+        private void SetUnitAdmin_Load(object sender, EventArgs e)
+        {
             // Init unitCbx
             AccessHelper access = new AccessHelper();
             // 取得所有設備管理單位資料
@@ -32,7 +35,7 @@ namespace Ischool.Booking.Equipment
             {
                 unitCbx.Items.Add(unit.Name);
 
-                _unitDataDic.Add(unit.Name,unit);
+                _unitDataDic.Add(unit.Name, unit);
             }
 
             unitCbx.SelectedIndex = 0;
@@ -56,6 +59,7 @@ namespace Ischool.Booking.Equipment
                 dgvrow.Cells[index++].Value = ("" + row["is_boss"]) == "true" ? "單位主管" : "單位管理員";
                 dgvrow.Cells[index++].Value = "" + row["created_name"];
                 dgvrow.Cells[index++].Value = DateTime.Parse("" + row["create_time"]).ToShortDateString();
+                dgvrow.Tag = "" + row["uid"]; // 單位管理員編號
 
                 dataGridViewX1.Rows.Add(dgvrow);
             }
@@ -75,8 +79,32 @@ namespace Ischool.Booking.Equipment
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            //dataGridViewX1.Rows[dataGridViewX1.selected]
-            MsgBox.Show(string.Format("確定是否刪除{0}老師單位管理員身分?"),"警告",MessageBoxButtons.YesNo);
+            int rowIndex = dataGridViewX1.SelectedRows[0].Index;
+
+            if (rowIndex > -1)
+            {
+                string teacherName = "" + dataGridViewX1.Rows[rowIndex].Cells[0].Value;
+
+                DialogResult result = MsgBox.Show(string.Format("確定是否刪除{0}老師單位管理員身分?", teacherName), "警告", MessageBoxButtons.YesNo);
+
+                string unitAdminID = "" + dataGridViewX1.SelectedRows[0].Tag;
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        DAO.UnitAdminDAO.DeleteUnitAdmin(unitAdminID);
+                        MsgBox.Show("刪除成功!");
+                        ReloadDataGridView();
+                    }
+                    catch(Exception ex)
+                    {
+                        MsgBox.Show(ex.Message);
+                    }
+
+                }
+            }
+
         }
 
         private void leaveBtn_Click(object sender, EventArgs e)
