@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 578);
+            this.ClientSize = new System.Drawing.Size(470, 225);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lberror);
             this.Controls.Add(this.tbxPropertyNo);

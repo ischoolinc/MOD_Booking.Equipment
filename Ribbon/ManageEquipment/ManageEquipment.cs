@@ -50,8 +50,11 @@ namespace Ischool.Booking.Equipment
                     dicUnit.Add(unit.unitName,unit.unitID);
                 }
             }
-
-            cbxUnit.SelectedIndex = 0;
+            if (cbxUnit.Items.Count > 0)
+            {
+                cbxUnit.SelectedIndex = 0;
+            }
+            
 
             // 3.ReloadDataGridView
             //ReloadDataGridView(dicUnit[cbxUnit.Text]);

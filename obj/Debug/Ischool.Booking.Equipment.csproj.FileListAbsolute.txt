@@ -27,7 +27,6 @@ D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csproj.CoreCompileInputs.cache
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.dll
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.pdb
-D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csprojResolveAssemblyReference.cache
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.BorrowEquipmentForm.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.EditEquipIOForm.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.ApplicationForm.resources

@@ -37,8 +37,11 @@ namespace Ischool.Booking.Equipment
 
                 _unitDataDic.Add(unit.Name, unit);
             }
-
-            unitCbx.SelectedIndex = 0;
+            if (unitCbx.Items.Count > 0)
+            {
+                unitCbx.SelectedIndex = 0;
+            }
+            
         }
 
         public void ReloadDataGridView()
