@@ -116,6 +116,16 @@ namespace Ischool.Booking.Equipment.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap photoshop_write_64 {
+            get {
+                object obj = ResourceManager.GetObject("photoshop_write_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap Report {
             get {
                 object obj = ResourceManager.GetObject("Report", resourceCulture);
@@ -129,6 +139,16 @@ namespace Ischool.Booking.Equipment.Properties {
         internal static System.Drawing.Bitmap sandglass_unlock_64 {
             get {
                 object obj = ResourceManager.GetObject("sandglass_unlock_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap stamp_paper_fav_128 {
+            get {
+                object obj = ResourceManager.GetObject("stamp_paper_fav_128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

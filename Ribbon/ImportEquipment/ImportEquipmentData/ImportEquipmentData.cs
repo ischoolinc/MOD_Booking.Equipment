@@ -14,7 +14,7 @@ namespace Ischool.Booking.Equipment
 
         private ImportEquipmentLog log = new ImportEquipmentLog();
 
-        DAO.Units _units = DAO.Units.getInstance();
+        DAO.UnitDAO dao = new DAO.UnitDAO();
 
         // 第一步 : 取得XML設備匯入設定檔
         public override string GetValidateRule()
@@ -106,14 +106,8 @@ namespace Ischool.Booking.Equipment
         }
 
         public string CheckUnitName(string unitName)
-        {
-            AccessHelper access = new AccessHelper();
-            List<UDT.EquipmentUnit> listUnits = access.Select<UDT.EquipmentUnit>();
-            Dictionary<string, UDT.EquipmentUnit> dicUnits = new Dictionary<string, UDT.EquipmentUnit>();
-            foreach (UDT.EquipmentUnit unit in listUnits)
-            {
-                dicUnits.Add(unit.Name,unit);
-            }
+        {            
+            Dictionary<string,UDT.EquipmentUnit> dicUnits = DAO.UnitDAO.GetUnits();
 
             if (dicUnits.ContainsKey(unitName))
             {

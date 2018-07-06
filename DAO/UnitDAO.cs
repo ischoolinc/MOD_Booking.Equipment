@@ -5,11 +5,34 @@ using System.Text;
 using System.Data;
 using FISCA.Data;
 using K12.Data;
+using FISCA.UDT;
 
 namespace Ischool.Booking.Equipment.DAO
 {
     class UnitDAO
     {
+        private static Dictionary<string, UDT.EquipmentUnit> dicUnits { get; set; }
+
+        public UnitDAO()
+        {
+            AccessHelper access = new AccessHelper();
+            List<UDT.EquipmentUnit> listUnits = access.Select<UDT.EquipmentUnit>();
+            dicUnits = new Dictionary<string, UDT.EquipmentUnit>();
+            foreach (UDT.EquipmentUnit unit in listUnits)
+            {
+                dicUnits.Add(unit.Name, unit);
+            }
+        }
+
+        /// <summary>
+        /// 取得所有管理單位資料
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, UDT.EquipmentUnit> GetUnits()
+        {
+            return dicUnits;
+        }
+
         /// <summary>
         /// 取得所有管理單位資料
         /// </summary>

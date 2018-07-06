@@ -106,6 +106,7 @@
     <Compile Include="BookingEquipmentAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="DAO\EquipIOHistory.cs" />
     <Compile Include="DAO\EquipmentDAO.cs" />
     <Compile Include="DAO\StatisticalReportDAO.cs" />
     <Compile Include="DAO\UnitAdminDAO.cs" />
@@ -119,6 +120,30 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\BorrowEquipment\ApplicationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\BorrowEquipment\ApplicationForm.Designer.cs">
+      <DependentUpon>ApplicationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\BorrowEquipment\ApplicationUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ribbon\BorrowEquipment\ApplicationUserControl.Designer.cs">
+      <DependentUpon>ApplicationUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\BorrowEquipment\BorrowEquipmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\BorrowEquipment\BorrowEquipmentForm.Designer.cs">
+      <DependentUpon>BorrowEquipmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\BorrowEquipment\EditEquipIOForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\BorrowEquipment\EditEquipIOForm.Designer.cs">
+      <DependentUpon>EditEquipIOForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Ribbon\ExportEquipment\ExportEquipmentForm.cs">
       <SubType>Form</SubType>
@@ -251,6 +276,8 @@
     <Content Include="Library\SmartSchool.Customization.PlugIn.xml" />
     <Content Include="Library\SmartSchool.ErrorReporting.dll" />
     <Content Include="Library\SmartSchool.ErrorReporting.xml" />
+    <None Include="Resources\photoshop_write_64.png" />
+    <None Include="Resources\stamp_paper_fav_128.png" />
     <None Include="Resources\EquipmentValidate.xml" />
     <None Include="Resources\wizard1.BackgroundImage.png" />
     <None Include="Resources\Import.Image.png" />
@@ -270,6 +297,18 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\BorrowEquipment\ApplicationForm.resx">
+      <DependentUpon>ApplicationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\BorrowEquipment\ApplicationUserControl.resx">
+      <DependentUpon>ApplicationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\BorrowEquipment\BorrowEquipmentForm.resx">
+      <DependentUpon>BorrowEquipmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\BorrowEquipment\EditEquipIOForm.resx">
+      <DependentUpon>EditEquipIOForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ribbon\ExportEquipment\ExportEquipmentForm.resx">
       <DependentUpon>ExportEquipmentForm.cs</DependentUpon>

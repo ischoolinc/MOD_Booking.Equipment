@@ -52,6 +52,25 @@ FROM
         }
 
         /// <summary>
+        /// 透過UnitIDs取得設備資料
+        /// </summary>
+        /// <param name="unitIDs"></param>
+        /// <returns></returns>
+        public static Dictionary<string, UDT.Equipment> GetEquipmentsByUnitIDs(List<string>unitIDs)
+        {
+            dicEquipments = new Dictionary<string, UDT.Equipment>();
+
+            AccessHelper access = new AccessHelper();
+            List<UDT.Equipment> listEquips = access.Select<UDT.Equipment>(string.Format("ref_unit_id IN({0})",string.Join(",",unitIDs)));
+            foreach (UDT.Equipment equip in listEquips)
+            {
+                dicEquipments.Add(equip.PropertyNo, equip);
+            }
+
+            return dicEquipments;
+        }
+
+        /// <summary>
         /// 取得單位設備資料
         /// </summary>
         /// <returns></returns>

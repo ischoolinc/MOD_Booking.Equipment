@@ -33,7 +33,7 @@ namespace Ischool.Booking.Equipment
         [MainMethod()]
         static public void Main()
         {
-            //驗證規則
+            // 匯入驗證規則
             FactoryProvider.FieldFactory.Add(new EquipmentFieldValidatorFactory());
             FactoryProvider.RowFactory.Add(new EquipmentRowValidatorFactory());
 
@@ -467,6 +467,39 @@ SELECT * FROM insert_role
             };
 
             #endregion
+
+            //RibbonBarItem borrowItem = FISCA.Presentation.MotherForm.RibbonBarItems["設備預約", "設備出借作業"];
+
+            //borrowItem["設備出借/歸還"].Size = RibbonBarButton.MenuButtonSize.Large;
+            //borrowItem["設備出借/歸還"].Image = Properties.Resources.stamp_paper_fav_128;
+            //borrowItem["設備出借/歸還"].Click += delegate 
+            //{
+            //    if (actor.isSysAdmin() || actor.isUnitAdmin())
+            //    {
+            //        BorrowEquipmentForm form = new BorrowEquipmentForm();
+            //        form.ShowDialog();
+            //    }
+            //    else
+            //    {
+            //        MsgBox.Show("此帳號沒有設備出借權限");
+            //    }
+
+            //};
+
+            //borrowItem["設備申請紀錄管理"].Size = RibbonBarButton.MenuButtonSize.Large;
+            //borrowItem["設備申請紀錄管理"].Image = Properties.Resources.photoshop_write_64;
+            //borrowItem["設備申請紀錄管理"].Click += delegate 
+            //{
+            //    if (actor.isSysAdmin() || actor.isUnitAdmin())
+            //    {
+
+            //    }
+            //    else
+            //    {
+            //        MsgBox.Show("此帳號沒有設備申請紀錄管理權限");
+            //    }
+            //};
+
 
             #region 權限管理
 
