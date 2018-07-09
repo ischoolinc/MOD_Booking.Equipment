@@ -46,6 +46,21 @@
       <HintPath>Library\Campus.Import.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="CefSharp, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\CefSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CefSharp.Core, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\CefSharp.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CefSharp.WinForms, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\CefSharp.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\DevComponents.DotNetBar2.dll</HintPath>
@@ -221,6 +236,9 @@
     <Content Include="Library\Campus.Report.dll" />
     <Content Include="Library\Campus.Windows.dll" />
     <Content Include="Library\Campus.Windows.xml" />
+    <Content Include="Library\CefSharp.Core.dll" />
+    <Content Include="Library\CefSharp.dll" />
+    <Content Include="Library\CefSharp.WinForms.dll" />
     <Content Include="Library\Customization.Tagging.dll" />
     <Content Include="Library\Customization.Tagging.pdb" />
     <Content Include="Library\DevComponents.DotNetBar2.dll" />

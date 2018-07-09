@@ -52,7 +52,7 @@ namespace Ischool.Booking.Equipment
             //檢查是否為布林
             bool.TryParse(cd[name], out checkUDT);
 
-            if (!checkUDT) //
+            if (!checkUDT) 
             {
                 AccessHelper access = new AccessHelper();
                 access.Select<UDT.Equipment>("UID = '00000'");
@@ -495,27 +495,29 @@ SELECT * FROM insert_role
 
             #endregion
 
-            //RibbonBarItem borrowItem = FISCA.Presentation.MotherForm.RibbonBarItems["設備預約", "設備出借作業"];
+            RibbonBarItem borrowItem = FISCA.Presentation.MotherForm.RibbonBarItems["設備預約", "設備出借作業"];
 
-            //borrowItem["設備出借/歸還"].Size = RibbonBarButton.MenuButtonSize.Large;
-            //borrowItem["設備出借/歸還"].Image = Properties.Resources.stamp_paper_fav_128;
-            //borrowItem["設備出借/歸還"].Click += delegate 
-            //{
-            //    if (actor.isSysAdmin() || actor.isUnitAdmin())
-            //    {
-            //        BorrowEquipmentForm form = new BorrowEquipmentForm();
-            //        form.ShowDialog();
-            //    }
-            //    else
-            //    {
-            //        MsgBox.Show("此帳號沒有設備出借權限");
-            //    }
+            borrowItem["設備出借/歸還"].Size = RibbonBarButton.MenuButtonSize.Large;
+            borrowItem["設備出借/歸還"].Image = Properties.Resources.stamp_paper_fav_128;
+            borrowItem["設備出借/歸還"].Click += delegate
+            {
+                if (actor.isSysAdmin() || actor.isUnitAdmin())
+                {
+                    BorrowEquipmentForm form = new BorrowEquipmentForm();
+                    form.ShowDialog();
+                }
+                else
+                {
+                    MsgBox.Show("此帳號沒有設備出借權限");
+                }
 
-            //};
+            };
+
+            #region 需求待討論
 
             //borrowItem["設備申請紀錄管理"].Size = RibbonBarButton.MenuButtonSize.Large;
             //borrowItem["設備申請紀錄管理"].Image = Properties.Resources.photoshop_write_64;
-            //borrowItem["設備申請紀錄管理"].Click += delegate 
+            //borrowItem["設備申請紀錄管理"].Click += delegate
             //{
             //    if (actor.isSysAdmin() || actor.isUnitAdmin())
             //    {
@@ -527,6 +529,7 @@ SELECT * FROM insert_role
             //    }
             //};
 
+            #endregion
 
             #region 權限管理
 
