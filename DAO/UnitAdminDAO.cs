@@ -11,10 +11,10 @@ namespace Ischool.Booking.Equipment.DAO
     class UnitAdminDAO
     {
         /// <summary>
-        /// 取得上未指定模組管理員與單位管理員身分的老師清單
+        /// 取得尚未指定模組管理員與在該單位尚未指定管理員身分的老師清單
         /// </summary>
         /// <returns></returns>
-        public static DataTable GetTeacher()
+        public static DataTable GetTeacher(string unitID)
         {
             string sql = string.Format(@"
 SELECT
@@ -23,6 +23,7 @@ FROM
     teacher
     LEFT OUTER JOIN $ischool.booking.equip_unit_admin AS unit_admin
         ON unit_admin.ref_teacher_id = teacher.id
+        AND unit_admin.ref_unit_id = {1}
     LEFT OUTER JOIN(
         SELECT
             _login.login_name
@@ -38,7 +39,7 @@ WHERE
     unit_admin.uid IS NULL
     AND target_login.login_name IS NULL
     AND teacher.status = 1
-                ", Program._roleAdminID);
+                ", Program._roleAdminID, unitID);
 
             QueryHelper qh = new QueryHelper();
             DataTable dt = qh.Select(sql);

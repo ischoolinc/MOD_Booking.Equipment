@@ -31,7 +31,7 @@ namespace Ischool.Booking.Equipment
         {
             dataGridViewX1.Rows.Clear();
 
-            DataTable dt = DAO.UnitAdminDAO.GetTeacher();
+            DataTable dt = DAO.UnitAdminDAO.GetTeacher(_unitID);
 
             foreach (DataRow row in dt.Rows)
             {

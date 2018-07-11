@@ -14,7 +14,15 @@ namespace Ischool.Booking.Equipment
 
         public BookingEquipmentAdmin()
         {
+            InitializeComponent();
+
             Group = "設備預約";
+
+            browser = new ChromiumWebBrowser("https://sites.google.com/ischool.com.tw/test-instruction/");
+            browser.Dock = DockStyle.Fill;
+            ContentPanePanel.Controls.Add(browser);
+
+
         }
 
         private static BookingEquipmentAdmin _BookingEquipmentAdmin;
@@ -45,9 +53,6 @@ namespace Ischool.Booking.Equipment
             this.Name = "BookingEquipmentAdmin";
             this.ResumeLayout(false);
 
-            browser = new ChromiumWebBrowser("https://sites.google.com/ischool.com.tw/test-instruction/");
-            browser.Dock = DockStyle.Fill;
-            ContentPanePanel.Controls.Add(browser);
         }
     }
 }

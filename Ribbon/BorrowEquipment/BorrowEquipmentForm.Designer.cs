@@ -2,30 +2,8 @@
 {
     partial class BorrowEquipmentForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -34,6 +12,9 @@
             this.tbxPropertyNo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lberror = new DevComponents.DotNetBar.LabelX();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.borrowEquipment1 = new Ischool.Booking.Equipment.Ribbon.BorrowEquipment.BorrowEquipment();
+            this.returnEquipment1 = new Ischool.Booking.Equipment.Ribbon.BorrowEquipment.ReturnEquipment();
             this.SuspendLayout();
             // 
             // labelX1
@@ -124,11 +105,51 @@
             this.btnSearch.Text = "搜尋";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // labelX2
+            // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(12, 149);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(470, 23);
+            this.labelX2.TabIndex = 9;
+            this.labelX2.Text = "-----------------------------------搜尋結果-----------------------------------";
+            this.labelX2.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // borrowEquipment1
+            // 
+            this.borrowEquipment1.BackColor = System.Drawing.Color.Transparent;
+            this.borrowEquipment1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.borrowEquipment1.Location = new System.Drawing.Point(12, 171);
+            this.borrowEquipment1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.borrowEquipment1.Name = "borrowEquipment1";
+            this.borrowEquipment1.Size = new System.Drawing.Size(471, 478);
+            this.borrowEquipment1.TabIndex = 10;
+            this.borrowEquipment1.Visible = false;
+            // 
+            // returnEquipment1
+            // 
+            this.returnEquipment1.BackColor = System.Drawing.Color.Transparent;
+            this.returnEquipment1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.returnEquipment1.Location = new System.Drawing.Point(12, 167);
+            this.returnEquipment1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.returnEquipment1.Name = "returnEquipment1";
+            this.returnEquipment1.Size = new System.Drawing.Size(471, 478);
+            this.returnEquipment1.TabIndex = 11;
+            this.returnEquipment1.Visible = false;
+            // 
             // BorrowEquipmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 225);
+            this.ClientSize = new System.Drawing.Size(494, 644);
+            this.Controls.Add(this.returnEquipment1);
+            this.Controls.Add(this.borrowEquipment1);
+            this.Controls.Add(this.labelX2);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lberror);
             this.Controls.Add(this.tbxPropertyNo);
@@ -142,14 +163,15 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
-
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX lbIdentity;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.Controls.TextBoxX tbxPropertyNo;
         private DevComponents.DotNetBar.LabelX lberror;
         private DevComponents.DotNetBar.ButtonX btnSearch;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private Ribbon.BorrowEquipment.BorrowEquipment borrowEquipment1;
+        private Ribbon.BorrowEquipment.ReturnEquipment returnEquipment1;
     }
 }

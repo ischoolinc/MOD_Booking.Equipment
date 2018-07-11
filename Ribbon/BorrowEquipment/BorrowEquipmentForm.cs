@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using FISCA.Presentation.Controls;
 using FISCA.Data;
+using Ischool.Booking.Equipment.Ribbon.BorrowEquipment;
 
 namespace Ischool.Booking.Equipment
 {
@@ -27,6 +28,11 @@ namespace Ischool.Booking.Equipment
         /// </summary>
         Dictionary<string, UDT.Equipment> dicAllEquipments;
 
+        /// <summary>
+        /// UserControl List
+        /// </summary>
+        List<IEquipUserControl> ucEquips;
+
         public BorrowEquipmentForm()
         {
             InitializeComponent();
@@ -34,20 +40,15 @@ namespace Ischool.Booking.Equipment
 
         private void BorrowEquipmentForm_Load(object sender, EventArgs e)
         {
+            ucEquips = new List<IEquipUserControl>();
+            ucEquips.Add(this.borrowEquipment1);
+            ucEquips.Add(this.returnEquipment1);
+
             dicAllEquipments = DAO.EquipmentDAO.GetEquipments();
 
             if (actor.isSysAdmin())
             {
                 lbIdentity.Text = "設備預約模組管理者";
-
-                //foreach (string unitName in DAO.UnitDAO.GetUnits().Keys)
-                //{
-                //    cbxUnit.Items.Add(unitName);
-                //}
-                //if (cbxUnit.Items.Count > 0)
-                //{
-                //    cbxUnit.SelectedIndex = 0;
-                //}
 
                 dicEquipments = DAO.EquipmentDAO.GetEquipments();
             }
@@ -57,13 +58,8 @@ namespace Ischool.Booking.Equipment
                 List<string> unitIDs = new List<string>();
                 foreach (DAO.UnitInfo unit in actor.getUnitAdminUnits())
                 {
-                    //cbxUnit.Items.Add(unit.unitName);
                     unitIDs.Add(unit.unitID);
                 }
-                //if (cbxUnit.Items.Count > 0)
-                //{
-                //    cbxUnit.SelectedIndex = 0;
-                //}
 
                 dicEquipments = DAO.EquipmentDAO.GetEquipmentsByUnitIDs(unitIDs);
             }
@@ -71,10 +67,11 @@ namespace Ischool.Booking.Equipment
 
         private void tbxPropertyNo_TextChanged(object sender, EventArgs e)
         {
-            
+            this.hideAllUserControl();
             if (tbxPropertyNo.Text == "")
             {
                 lberror.Visible = false;
+                btnSearch.Enabled = false;
             }
             else
             {
@@ -102,25 +99,57 @@ namespace Ischool.Booking.Equipment
         {
             // 1.  取得設備ID
             string equipID = dicEquipments[tbxPropertyNo.Text].UID;
-            string equipName = dicEquipments[tbxPropertyNo.Text].Name;
+            //string equipName = dicEquipments[tbxPropertyNo.Text].Name;
 
             // 2. 判斷設備是否出借中
             DAO.EquipIOHistory dao = new DAO.EquipIOHistory(equipID);
+
+            this.hideAllUserControl();
+            IEquipUserControl uc = this.getUserCotnrol(dao.IsBorrow());
+            uc.SetVisible(true);
+            uc.SetEquipID(equipID);
+
             // b. 設備已出借 : 讀取出借紀錄 
-            if (dao.IsBorrow())
-            {
-                EditEquipIOForm form = new EditEquipIOForm(equipID);
-                form.Text = "設備歸還";
-                form.ShowDialog();
-            }
+            //if (dao.IsBorrow())
+            //{
+            //    returnUserControl1.Visible = false;
+            //    borrowUserControl1.Visible = true;
+            //    borrowUserControl1.SetEquipID();
+            //    //EditEquipIOForm form = new EditEquipIOForm(equipID);
+            //    //form.Text = "設備歸還";
+            //    //form.ShowDialog();
+            //}
             // a. 設備已歸還 : 讀取當天設備預約紀錄
+            //else
+            //{
+            //    borrowUserControl1.Visible = false;
+            //    returnUserControl1.Visible = true;
+            //    returnUserControl1.SetEquipID();
+            //    //ApplicationForm form = new ApplicationForm(equipID);
+            //    //form.Text = string.Format("{1}設備  {0} 申請紀錄", DateTime.Now.ToShortDateString(), equipName);
+            //    //form.ShowDialog();
+            //}
+
+        }
+
+        private IEquipUserControl getUserCotnrol(bool isBorrowed)
+        {
+            if (isBorrowed)
+            {
+                return this.returnEquipment1;
+            }
             else
             {
-                ApplicationForm form = new ApplicationForm(equipID);
-                form.Text = string.Format("{1}設備  {0} 申請紀錄", DateTime.Now.ToShortDateString(), equipName);
-                form.ShowDialog();
+                return this.borrowEquipment1;
             }
-            
+        }
+
+        private void hideAllUserControl()
+        {
+            foreach(IEquipUserControl uc in this.ucEquips)
+            {
+                uc.SetVisible(false);
+            }
         }
     }
 }

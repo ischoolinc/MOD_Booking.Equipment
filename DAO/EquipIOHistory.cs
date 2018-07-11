@@ -14,11 +14,12 @@ namespace Ischool.Booking.Equipment.DAO
 
         public EquipIOHistory(string equipID)
         {
-            // 判斷設備狀態 : 出借 or 歸還 
+            // 判斷設備狀態 : 是否出借中
             DataTable dt = GetBorrowData(equipID);
             this.isBorrow = dt.Rows.Count > 0;
         }
 
+        // 如果設備尚未歸還 IsBorrow = true
         public bool IsBorrow()
         {
             return this.isBorrow;
@@ -29,7 +30,7 @@ namespace Ischool.Booking.Equipment.DAO
         /// </summary>
         /// <param name="equipID"></param>
         /// <returns></returns>
-        public DataTable GetBorrowData(string equipID)
+        public static DataTable GetBorrowData(string equipID)
         {
             string sql = string.Format(@"
 SELECT
@@ -62,7 +63,7 @@ WHERE
         /// </summary>
         /// <param name="time"></param>
         /// <param name="history"></param>
-        public static void ReturnEquip(string time,string history)
+        public static void ReturnEquip(string history)
         {
             string sql = string.Format(@"
 UPDATE $ischool.booking.equip_io_history 
@@ -70,11 +71,32 @@ SET
     return_time = '{0}'
 WHERE
     uid = {1}
-            ", time, history);
+            ", DateTime.Now.ToString("yyyy/MM/dd HH:mm"), history);
 
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);
 
+        }
+
+        /// <summary>
+        /// 設備借出
+        /// </summary>
+        /// <param name="appDetailID"></param>
+        public static void BorrowEquip(string appDetailID)
+        {
+            string sql = string.Format(@"
+INSERT INTO $ischool.booking.equip_io_history(
+    ref_app_detail_id
+    , borrow_time
+)
+VALUES(
+    {0}
+    , '{1}'
+)
+                ",appDetailID,DateTime.Now.ToString("yyyy/MM/dd HH:mm"));
+
+            UpdateHelper up = new UpdateHelper();
+            up.Execute(sql);
         }
 
         /// <summary>
@@ -94,9 +116,14 @@ FROM
     $ischool.booking.equip_applications AS app
     LEFT OUTER JOIN $ischool.booking.equip_application_detail AS app_detail
         ON app.uid = app_detail.ref_application_id
+    LEFT OUTER JOIN $ischool.booking.equip_io_history AS history
+        ON app_detail.uid = history.ref_app_detail_id
 WHERE
     app.ref_equip_id = {0}
+    AND app.is_canceled = false
+    AND app_detail.is_canceled = false
     AND date_trunc('day',app_detail.start_time) =  CURRENT_DATE
+    AND history.uid IS NULL
 ORDER BY
     start_time
             ", equipID);

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ischool.Booking.Equipment</RootNamespace>
     <AssemblyName>Ischool.Booking.Equipment</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Cells, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9a40d5a4b59e5256, processorArchitecture=MSIL">
@@ -66,6 +68,7 @@
       <HintPath>Library\DevComponents.DotNetBar2.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevComponents.TreeGX, Version=9.5.0.1, Culture=neutral, PublicKeyToken=055db68f670cfeab, processorArchitecture=MSIL" />
     <Reference Include="FISCA, Version=2.5.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.dll</HintPath>
@@ -108,7 +111,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -136,17 +141,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Ribbon\BorrowEquipment\ApplicationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ribbon\BorrowEquipment\ApplicationForm.Designer.cs">
-      <DependentUpon>ApplicationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Ribbon\BorrowEquipment\ApplicationUserControl.cs">
+    <Compile Include="Ribbon\BorrowEquipment\ReturnEquipment.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Ribbon\BorrowEquipment\ApplicationUserControl.Designer.cs">
-      <DependentUpon>ApplicationUserControl.cs</DependentUpon>
+    <Compile Include="Ribbon\BorrowEquipment\ReturnEquipment.Designer.cs">
+      <DependentUpon>ReturnEquipment.cs</DependentUpon>
     </Compile>
     <Compile Include="Ribbon\BorrowEquipment\BorrowEquipmentForm.cs">
       <SubType>Form</SubType>
@@ -154,11 +153,12 @@
     <Compile Include="Ribbon\BorrowEquipment\BorrowEquipmentForm.Designer.cs">
       <DependentUpon>BorrowEquipmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ribbon\BorrowEquipment\EditEquipIOForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Ribbon\BorrowEquipment\IEquipUserControl.cs" />
+    <Compile Include="Ribbon\BorrowEquipment\BorrowEquipment.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Ribbon\BorrowEquipment\EditEquipIOForm.Designer.cs">
-      <DependentUpon>EditEquipIOForm.cs</DependentUpon>
+    <Compile Include="Ribbon\BorrowEquipment\BorrowEquipment.Designer.cs">
+      <DependentUpon>BorrowEquipment.cs</DependentUpon>
     </Compile>
     <Compile Include="Ribbon\ExportEquipment\ExportEquipmentForm.cs">
       <SubType>Form</SubType>
@@ -316,17 +316,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ribbon\BorrowEquipment\ApplicationForm.resx">
-      <DependentUpon>ApplicationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ribbon\BorrowEquipment\ApplicationUserControl.resx">
-      <DependentUpon>ApplicationUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Ribbon\BorrowEquipment\ReturnEquipment.resx">
+      <DependentUpon>ReturnEquipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ribbon\BorrowEquipment\BorrowEquipmentForm.resx">
       <DependentUpon>BorrowEquipmentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ribbon\BorrowEquipment\EditEquipIOForm.resx">
-      <DependentUpon>EditEquipIOForm.cs</DependentUpon>
+    <EmbeddedResource Include="Ribbon\BorrowEquipment\BorrowEquipment.resx">
+      <DependentUpon>BorrowEquipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ribbon\ExportEquipment\ExportEquipmentForm.resx">
       <DependentUpon>ExportEquipmentForm.cs</DependentUpon>

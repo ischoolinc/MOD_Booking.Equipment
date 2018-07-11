@@ -82,15 +82,15 @@ namespace Ischool.Booking.Equipment
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            int rowIndex = dataGridViewX1.SelectedRows[0].Index;
-
+            //int rowIndex = dataGridViewX1.SelectedRows[0].Index;
+            int rowIndex = dataGridViewX1.SelectedCells[0].RowIndex;
             if (rowIndex > -1)
             {
                 string teacherName = "" + dataGridViewX1.Rows[rowIndex].Cells[0].Value;
 
                 DialogResult result = MsgBox.Show(string.Format("確定是否刪除{0}老師單位管理員身分?", teacherName), "警告", MessageBoxButtons.YesNo);
 
-                string unitAdminID = "" + dataGridViewX1.SelectedRows[0].Tag;
+                string unitAdminID = "" + dataGridViewX1.Rows[rowIndex].Tag;
 
                 if (result == DialogResult.Yes)
                 {

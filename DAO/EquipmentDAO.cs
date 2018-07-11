@@ -85,7 +85,9 @@ WHERE
     ref_unit_id = {0}
 ORDER BY
 	category
-	, create_time
+	--, property_no
+    , company
+    , model_no
             ", unitID);
 
             QueryHelper qh = new QueryHelper();

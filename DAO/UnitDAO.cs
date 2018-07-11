@@ -83,7 +83,7 @@ VALUES(
         {
             string sql = string.Format(@"
 UPDATE 
-    $ischool.booking.equip_unit
+    $ischool.booking.equip_units
 SET
     name = '{0}'
     , create_time = '{1}'

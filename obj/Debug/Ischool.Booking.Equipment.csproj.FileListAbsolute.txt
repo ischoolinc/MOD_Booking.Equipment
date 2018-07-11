@@ -13,13 +13,13 @@ C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\
 C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.AddUnitAdmin.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\bin\Debug\Ischool.Booking.Equipment.dll
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\bin\Debug\Ischool.Booking.Equipment.pdb
+D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\bin\Debug\DevComponents.TreeGX.dll
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csprojResolveAssemblyReference.cache
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.BookingEquipmentAdmin.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.Properties.Resources.resources
-D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.ApplicationForm.resources
-D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.Ribbon.BorrowEquipment.ApplicationUserControl.resources
+D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.Ribbon.BorrowEquipment.ReturnEquipment.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.BorrowEquipmentForm.resources
-D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.EditEquipIOForm.resources
+D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.Ribbon.BorrowEquipment.BorrowEquipment.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.ExportEquipmentForm.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.EditEquipmentForm.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.ManageEquipment.resources
