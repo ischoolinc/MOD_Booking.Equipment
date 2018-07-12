@@ -13,7 +13,7 @@ namespace Ischool.Booking.Equipment
         {
             switch (typeName.ToUpper())
             {
-                case "CHECKUNITINISCHOOL":
+                case "EQUIPMENT_CHECKUNITINISCHOOL":
                     return new CheckUnitInIschool();
                 case "CHECKSTRING":
                     return new CheckString();

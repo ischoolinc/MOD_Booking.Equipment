@@ -76,7 +76,7 @@ namespace Ischool.Booking.Equipment
                             case "設備狀態":
                                 report.Worksheets[0].Cells[rowIndex, col].PutValue("" + row["status"]);
                                 break;
-                            case "未取用解除預約時間":
+                            case "未取用解除預約時間(分)":
                                 report.Worksheets[0].Cells[rowIndex, col].PutValue("" + row["deadline"]);
                                 break;
                             case "放置位置":

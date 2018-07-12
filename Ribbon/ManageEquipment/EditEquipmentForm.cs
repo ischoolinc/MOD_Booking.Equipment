@@ -198,7 +198,7 @@ namespace Ischool.Booking.Equipment
             int n = 0;
             if (!int.TryParse(tbxDeadLine.Text, out n))
             {
-                lbErrorText.Text = "未取用取消時間為數值!";
+                lbErrorText.Text = "未取用解除預約時間(分)為數值!";
                 lbErrorText.Visible = true;
                 btnSave.Enabled = false;
                 return false;

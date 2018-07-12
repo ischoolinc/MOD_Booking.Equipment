@@ -117,7 +117,7 @@
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1115, 381);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1159, 381);
             this.dataGridViewX1.TabIndex = 2;
             // 
             // addBtn
@@ -126,7 +126,7 @@
             this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addBtn.BackColor = System.Drawing.Color.Transparent;
             this.addBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.addBtn.Location = new System.Drawing.Point(809, 444);
+            this.addBtn.Location = new System.Drawing.Point(853, 444);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 23);
             this.addBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -140,7 +140,7 @@
             this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.updateBtn.BackColor = System.Drawing.Color.Transparent;
             this.updateBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.updateBtn.Location = new System.Drawing.Point(890, 444);
+            this.updateBtn.Location = new System.Drawing.Point(934, 444);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 23);
             this.updateBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -154,7 +154,7 @@
             this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteBtn.BackColor = System.Drawing.Color.Transparent;
             this.deleteBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.deleteBtn.Location = new System.Drawing.Point(971, 444);
+            this.deleteBtn.Location = new System.Drawing.Point(1015, 444);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 23);
             this.deleteBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -168,7 +168,7 @@
             this.leaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.leaveBtn.BackColor = System.Drawing.Color.Transparent;
             this.leaveBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.leaveBtn.Location = new System.Drawing.Point(1052, 444);
+            this.leaveBtn.Location = new System.Drawing.Point(1096, 444);
             this.leaveBtn.Name = "leaveBtn";
             this.leaveBtn.Size = new System.Drawing.Size(75, 23);
             this.leaveBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -185,7 +185,7 @@
             // 
             this.lb3.BackgroundStyle.Class = "";
             this.lb3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lb3.Location = new System.Drawing.Point(904, 18);
+            this.lb3.Location = new System.Drawing.Point(948, 18);
             this.lb3.Name = "lb3";
             this.lb3.Size = new System.Drawing.Size(61, 23);
             this.lb3.TabIndex = 7;
@@ -198,7 +198,7 @@
             this.cbxUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbxUnit.FormattingEnabled = true;
             this.cbxUnit.ItemHeight = 19;
-            this.cbxUnit.Location = new System.Drawing.Point(971, 17);
+            this.cbxUnit.Location = new System.Drawing.Point(1015, 17);
             this.cbxUnit.Name = "cbxUnit";
             this.cbxUnit.Size = new System.Drawing.Size(156, 25);
             this.cbxUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -237,9 +237,9 @@
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "未取用取消時間(分)";
+            this.Column6.HeaderText = "未取用解除預約時間(分)";
             this.Column6.Name = "Column6";
-            this.Column6.Width = 150;
+            this.Column6.Width = 170;
             // 
             // Column7
             // 
@@ -261,7 +261,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 479);
+            this.ClientSize = new System.Drawing.Size(1183, 479);
             this.Controls.Add(this.cbxUnit);
             this.Controls.Add(this.lb3);
             this.Controls.Add(this.leaveBtn);

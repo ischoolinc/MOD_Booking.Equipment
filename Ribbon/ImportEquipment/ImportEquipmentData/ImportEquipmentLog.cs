@@ -52,7 +52,7 @@ namespace Ischool.Booking.Equipment
 
                 if (!string.IsNullOrEmpty("" + equip.DeadLine))
                 {
-                    log.AppendLine(string.Format("未取用取消時間「{0}」", equip.DeadLine));
+                    log.AppendLine(string.Format("未取用解除預約時間(分)「{0}」", equip.DeadLine));
                 }
 
                 if (!string.IsNullOrEmpty("" + equip.Place))

@@ -18,7 +18,7 @@ namespace Ischool.Booking.Equipment
 
             Group = "設備預約";
 
-            browser = new ChromiumWebBrowser("https://sites.google.com/ischool.com.tw/test-instruction/");
+            browser = new ChromiumWebBrowser("https://sites.google.com/ischool.com.tw/booking-equipment/%E9%A6%96%E9%A0%81");
             browser.Dock = DockStyle.Fill;
             ContentPanePanel.Controls.Add(browser);
 

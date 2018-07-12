@@ -98,7 +98,7 @@ namespace Ischool.Booking.Equipment
             equip.Company = Row.GetValue("廠牌");
             equip.ModelNo = Row.GetValue("型號");
             equip.Status = Row.GetValue("設備狀態");
-            equip.DeadLine = Row.GetValue("未取用解除預約時間") == "" ? 0 : int.Parse(Row.GetValue("未取用解除預約時間"));
+            equip.DeadLine = Row.GetValue("未取用解除預約時間(分)") == "" ? 0 : int.Parse(Row.GetValue("未取用解除預約時間(分)"));
             equip.Place = Row.GetValue("放置位置");
             equip.RefUnitID = int.Parse(CheckUnitName(Row.GetValue("管理單位名稱")));
             equip.CreateTime = DateTime.Now;

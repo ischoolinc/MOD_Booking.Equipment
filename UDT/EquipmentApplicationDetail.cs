@@ -31,7 +31,7 @@ namespace Ischool.Booking.Equipment.UDT
         public DateTime EndTime { get; set; }
 
         /// <summary>
-        /// 未取用取消時間
+        /// 未取用解除預約時間(分)
         /// </summary>
         [Field(Field = "deadline", Indexed = false)]
         public int DeadLine { get; set; }
