@@ -55,9 +55,6 @@ namespace Ischool.Booking.Equipment
                 cbxUnit.SelectedIndex = 0;
             }
             
-
-            // 3.ReloadDataGridView
-            //ReloadDataGridView(dicUnit[cbxUnit.Text]);
         }
 
         private void ReloadDataGridView(string unitID)
@@ -92,7 +89,7 @@ namespace Ischool.Booking.Equipment
 
         private void cbxUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ReloadDataGridView(dicUnit[cbxUnit.Text]);
+            ReloadDataGridView(dicUnit[cbxUnit.SelectedItem.ToString()]);
         }
 
         private void addBtn_Click(object sender, EventArgs e)

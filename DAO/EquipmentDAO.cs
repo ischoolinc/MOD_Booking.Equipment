@@ -136,7 +136,7 @@ VALUES(
     , '{9}'
     , {10}
 )
-            ",name, category,property, company, model, status, deadline, place,DateTime.Now.ToShortDateString(),Actor.Account,unitID);
+            ",name, category,property, company, model, status, deadline, place,DateTime.Now.ToShortDateString(),Actor.UserAccount,unitID);
 
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);
@@ -172,7 +172,7 @@ SET
     , ref_unit_id = {10}
 WHERE
     uid ={11}
-            ",name,category,propertyNo,company,model,status,deadline,place,DateTime.Now.ToShortDateString(),Actor.Account,unitID, equipID);
+            ",name,category,propertyNo,company,model,status,deadline,place,DateTime.Now.ToShortDateString(),Actor.UserAccount,unitID, equipID);
 
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);

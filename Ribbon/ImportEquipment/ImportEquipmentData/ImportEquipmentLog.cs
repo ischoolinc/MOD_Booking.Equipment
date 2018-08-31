@@ -70,7 +70,7 @@ namespace Ischool.Booking.Equipment
 
                 log.AppendLine(string.Format("建立日期「{0}」", DateTime.Now.ToShortDateString()));
 
-                log.AppendLine(string.Format("建立者「{0}」", Actor.Account));
+                log.AppendLine(string.Format("建立者「{0}」", Actor.UserAccount));
             }
             catch (Exception ex)
             {

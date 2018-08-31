@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.lbIdentity = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -102,22 +102,23 @@
             this.Column7,
             this.Column9,
             this.Column8});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(12, 57);
             this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1159, 381);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1052, 511);
             this.dataGridViewX1.TabIndex = 2;
             // 
             // addBtn
@@ -126,7 +127,7 @@
             this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addBtn.BackColor = System.Drawing.Color.Transparent;
             this.addBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.addBtn.Location = new System.Drawing.Point(853, 444);
+            this.addBtn.Location = new System.Drawing.Point(746, 574);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 23);
             this.addBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -140,7 +141,7 @@
             this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.updateBtn.BackColor = System.Drawing.Color.Transparent;
             this.updateBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.updateBtn.Location = new System.Drawing.Point(934, 444);
+            this.updateBtn.Location = new System.Drawing.Point(827, 574);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 23);
             this.updateBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -154,7 +155,7 @@
             this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteBtn.BackColor = System.Drawing.Color.Transparent;
             this.deleteBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.deleteBtn.Location = new System.Drawing.Point(1015, 444);
+            this.deleteBtn.Location = new System.Drawing.Point(908, 574);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 23);
             this.deleteBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -168,7 +169,7 @@
             this.leaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.leaveBtn.BackColor = System.Drawing.Color.Transparent;
             this.leaveBtn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.leaveBtn.Location = new System.Drawing.Point(1096, 444);
+            this.leaveBtn.Location = new System.Drawing.Point(989, 574);
             this.leaveBtn.Name = "leaveBtn";
             this.leaveBtn.Size = new System.Drawing.Size(75, 23);
             this.leaveBtn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -185,7 +186,7 @@
             // 
             this.lb3.BackgroundStyle.Class = "";
             this.lb3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lb3.Location = new System.Drawing.Point(948, 18);
+            this.lb3.Location = new System.Drawing.Point(841, 18);
             this.lb3.Name = "lb3";
             this.lb3.Size = new System.Drawing.Size(61, 23);
             this.lb3.TabIndex = 7;
@@ -196,9 +197,10 @@
             this.cbxUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxUnit.DisplayMember = "Text";
             this.cbxUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbxUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUnit.FormattingEnabled = true;
             this.cbxUnit.ItemHeight = 19;
-            this.cbxUnit.Location = new System.Drawing.Point(1015, 17);
+            this.cbxUnit.Location = new System.Drawing.Point(908, 17);
             this.cbxUnit.Name = "cbxUnit";
             this.cbxUnit.Size = new System.Drawing.Size(156, 25);
             this.cbxUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -207,61 +209,78 @@
             // 
             // Column1
             // 
+            this.Column1.Frozen = true;
             this.Column1.HeaderText = "設備名稱";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column10
             // 
+            this.Column10.Frozen = true;
             this.Column10.HeaderText = "設備類別";
             this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
             // Column2
             // 
+            this.Column2.Frozen = true;
             this.Column2.HeaderText = "財產編號";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
+            this.Column3.Frozen = true;
             this.Column3.HeaderText = "廠牌";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
+            this.Column4.Frozen = true;
             this.Column4.HeaderText = "型號";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
+            this.Column5.Frozen = true;
             this.Column5.HeaderText = "設備狀態";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "未取用解除預約時間(分)";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             this.Column6.Width = 170;
             // 
             // Column7
             // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column7.HeaderText = "放置位置";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 250;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "最後修改者";
             this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "修改日期";
             this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             // 
             // ManageEquipment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 479);
+            this.ClientSize = new System.Drawing.Size(1076, 609);
             this.Controls.Add(this.cbxUnit);
             this.Controls.Add(this.lb3);
             this.Controls.Add(this.leaveBtn);
@@ -273,7 +292,7 @@
             this.Controls.Add(this.labelX1);
             this.DoubleBuffered = true;
             this.Name = "ManageEquipment";
-            this.Text = "管理設備";
+            this.Text = "設備管理";
             this.Load += new System.EventHandler(this.ManageEquipment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);

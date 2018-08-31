@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="DAO\EquipIOHistory.cs" />
     <Compile Include="DAO\EquipmentDAO.cs" />
+    <Compile Include="DAO\Role.cs" />
     <Compile Include="DAO\StatisticalReportDAO.cs" />
     <Compile Include="DAO\UnitAdminDAO.cs" />
     <Compile Include="DAO\UnitDAO.cs" />
@@ -294,6 +295,15 @@
     <Content Include="Library\SmartSchool.Customization.PlugIn.xml" />
     <Content Include="Library\SmartSchool.ErrorReporting.dll" />
     <Content Include="Library\SmartSchool.ErrorReporting.xml" />
+    <None Include="Resources\barcode_ok_128.png" />
+    <None Include="Resources\meeting_config_64.png" />
+    <None Include="Resources\college_config_64.png" />
+    <None Include="Resources\foreign_language_config_64.png" />
+    <None Include="Resources\shopping_cart_fav_64.png" />
+    <None Include="Resources\shopping_cart_config_64.png" />
+    <None Include="Resources\market_segmentation_fav_64.png" />
+    <None Include="Resources\market_segmentation_zoom_64.png" />
+    <None Include="Resources\market_segmentation_config_64.png" />
     <None Include="Resources\photoshop_write_64.png" />
     <None Include="Resources\stamp_paper_fav_128.png" />
     <None Include="Resources\EquipmentValidate.xml" />

@@ -7,17 +7,17 @@ namespace Ischool.Booking.Equipment
 {
     class Permissions
     {
-        public static string 設備管理單位 { get { return "1C4BD840-DFF1-4CF0-A8F9-DC0462F4DC2A"; } }
-        public static bool 設定設備管理單位權限
+        public static string 管理單位 { get { return "1C4BD840-DFF1-4CF0-A8F9-DC0462F4DC2A"; } }
+        public static bool 設定管理單位權限
         {
             get
             {
-                return FISCA.Permission.UserAcl.Current[設備管理單位].Executable;
+                return FISCA.Permission.UserAcl.Current[管理單位].Executable;
             }
         }
 
         public static string 設備單位管理員 { get { return "81A459CC-50DB-4891-9728-26B5A4F9E9B2"; } }
-        public static bool 設定設備單位權管理員權限
+        public static bool 設定單位管理員權限
         {
             get
             {

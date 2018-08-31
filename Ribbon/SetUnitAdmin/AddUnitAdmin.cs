@@ -108,7 +108,7 @@ namespace Ischool.Booking.Equipment
                     string teacherID = "" + dataGridViewX1.Rows[e.RowIndex].Tag;
                     string loginID = Actor.GetLoginIDByAccount(teacherAccount);
                     string createTime = DateTime.Now.ToShortDateString();
-                    string createdBy = Actor.Account;
+                    string createdBy = Actor.UserAccount;
 
                     try
                     {

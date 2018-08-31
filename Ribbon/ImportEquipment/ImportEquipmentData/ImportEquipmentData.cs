@@ -102,7 +102,7 @@ namespace Ischool.Booking.Equipment
             equip.Place = Row.GetValue("放置位置");
             equip.RefUnitID = int.Parse(CheckUnitName(Row.GetValue("管理單位名稱")));
             equip.CreateTime = DateTime.Now;
-            equip.CreatedBy = Actor.Account;
+            equip.CreatedBy = Actor.UserAccount;
         }
 
         public string CheckUnitName(string unitName)
@@ -159,7 +159,7 @@ namespace Ischool.Booking.Equipment
 
                     }
                     access.UpdateValues(listEquipmentUpdate);
-                    FISCA.LogAgent.ApplicationLog.Log(Actor.Account, "更新匯入", mstrLog2.ToString());
+                    FISCA.LogAgent.ApplicationLog.Log(Actor.UserAccount, "更新匯入", mstrLog2.ToString());
                 }
                 catch (Exception ex)
                 {

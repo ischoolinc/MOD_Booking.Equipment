@@ -61,6 +61,16 @@ namespace Ischool.Booking.Equipment.Properties {
         }
         
         /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap barcode_ok_128 {
+            get {
+                object obj = ResourceManager.GetObject("barcode_ok_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;format.xsl&quot; ?&gt;
         ///&lt;ValidateRule&gt;
@@ -96,9 +106,59 @@ namespace Ischool.Booking.Equipment.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap foreign_language_config_64 {
+            get {
+                object obj = ResourceManager.GetObject("foreign_language_config_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap Import_Image {
             get {
                 object obj = ResourceManager.GetObject("Import_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap market_segmentation_config_64 {
+            get {
+                object obj = ResourceManager.GetObject("market_segmentation_config_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap market_segmentation_fav_64 {
+            get {
+                object obj = ResourceManager.GetObject("market_segmentation_fav_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap market_segmentation_zoom_64 {
+            get {
+                object obj = ResourceManager.GetObject("market_segmentation_zoom_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap meeting_config_64 {
+            get {
+                object obj = ResourceManager.GetObject("meeting_config_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -139,6 +199,26 @@ namespace Ischool.Booking.Equipment.Properties {
         internal static System.Drawing.Bitmap sandglass_unlock_64 {
             get {
                 object obj = ResourceManager.GetObject("sandglass_unlock_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap shopping_cart_config_64 {
+            get {
+                object obj = ResourceManager.GetObject("shopping_cart_config_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap shopping_cart_fav_64 {
+            get {
+                object obj = ResourceManager.GetObject("shopping_cart_fav_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

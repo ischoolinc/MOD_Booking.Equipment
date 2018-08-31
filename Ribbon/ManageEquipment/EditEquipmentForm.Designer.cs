@@ -80,7 +80,7 @@
             this.tbxName.Location = new System.Drawing.Point(93, 16);
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(100, 25);
-            this.tbxName.TabIndex = 1;
+            this.tbxName.TabIndex = 0;
             this.tbxName.TextChanged += new System.EventHandler(this.tbxName_TextChanged);
             // 
             // labelX2
@@ -107,7 +107,7 @@
             this.tbxPropertyNo.Location = new System.Drawing.Point(345, 59);
             this.tbxPropertyNo.Name = "tbxPropertyNo";
             this.tbxPropertyNo.Size = new System.Drawing.Size(100, 25);
-            this.tbxPropertyNo.TabIndex = 3;
+            this.tbxPropertyNo.TabIndex = 2;
             this.tbxPropertyNo.TextChanged += new System.EventHandler(this.tbxPropertyNo_TextChanged);
             // 
             // tbxModelNo
@@ -132,7 +132,7 @@
             this.tbxCompany.Location = new System.Drawing.Point(93, 99);
             this.tbxCompany.Name = "tbxCompany";
             this.tbxCompany.Size = new System.Drawing.Size(100, 25);
-            this.tbxCompany.TabIndex = 5;
+            this.tbxCompany.TabIndex = 3;
             // 
             // tbxDeadLine
             // 
@@ -241,7 +241,7 @@
             this.tbxPlace.Location = new System.Drawing.Point(93, 181);
             this.tbxPlace.Name = "tbxPlace";
             this.tbxPlace.Size = new System.Drawing.Size(355, 25);
-            this.tbxPlace.TabIndex = 14;
+            this.tbxPlace.TabIndex = 7;
             // 
             // btnSave
             // 
@@ -253,7 +253,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "儲存";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -267,7 +267,7 @@
             this.btnLeave.Name = "btnLeave";
             this.btnLeave.Size = new System.Drawing.Size(75, 23);
             this.btnLeave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnLeave.TabIndex = 16;
+            this.btnLeave.TabIndex = 9;
             this.btnLeave.Text = "離開";
             this.btnLeave.Click += new System.EventHandler(this.btnLeave_Click);
             // 
@@ -330,7 +330,7 @@
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(100, 25);
             this.cbxStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbxStatus.TabIndex = 20;
+            this.cbxStatus.TabIndex = 5;
             // 
             // comboItem4
             // 
@@ -372,7 +372,7 @@
             this.tbxCategory.Location = new System.Drawing.Point(93, 59);
             this.tbxCategory.Name = "tbxCategory";
             this.tbxCategory.Size = new System.Drawing.Size(100, 25);
-            this.tbxCategory.TabIndex = 22;
+            this.tbxCategory.TabIndex = 1;
             // 
             // EditEquipmentForm
             // 

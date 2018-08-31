@@ -56,7 +56,7 @@ namespace Ischool.Booking.Equipment
             {
                 try
                 {
-                    DAO.UnitDAO.InsertUnitInfo(unitNameTbx.Text,DateTime.Now.ToShortDateString(),Actor.Account);
+                    DAO.UnitDAO.InsertUnitInfo(unitNameTbx.Text,DateTime.Now.ToShortDateString(),Actor.UserAccount);
                     MsgBox.Show("儲存成功!");
                     this.Close();
                 }
@@ -69,7 +69,7 @@ namespace Ischool.Booking.Equipment
             {
                 try
                 {
-                    DAO.UnitDAO.UpdateUnitInfo(unitNameTbx.Text,DateTime.Now.ToShortDateString(),Actor.Account, _unitID);       
+                    DAO.UnitDAO.UpdateUnitInfo(unitNameTbx.Text,DateTime.Now.ToShortDateString(),Actor.UserAccount, _unitID);       
                     MsgBox.Show("儲存成功!");
                     this.Close();
                 }
