@@ -155,5 +155,49 @@ where is_canceled is not true
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);
         }
+
+        public static DataTable GetApplicationByCondition(string condition)
+        {
+            string sql = @"
+SELECT
+    equip.name
+    , equip.category
+    , equip.company
+    , equip.model_no
+    , equip.property_no
+    , equip_app.applicant_name
+    , app_detail.start_time
+    , app_detail.end_time
+    , equip_app.apply_reason
+    , equip_app.is_canceled AS 使用者取消
+    , app_detail.is_canceled AS 系統取消
+    , history.borrow_time
+    , history.return_time
+    , CASE 
+        WHEN equip_app.is_canceled = false AND app_detail.is_canceled = false AND history.borrow_time IS NULL THEN '預約'
+        WHEN app_detail.is_canceled = true OR equip_app.is_canceled = true THEN '取消'
+        WHEN history.borrow_time IS NOT NULL AND history.return_time IS NULL THEN '出借中'
+        WHEN history.return_time IS NOT NULL THEN '已歸還'
+        ELSE ''
+        END AS stats
+FROM
+    $ischool.booking.equip_applications AS equip_app
+    LEFT OUTER JOIN $ischool.booking.equipment AS equip
+        ON equip.uid = equip_app.ref_equip_id
+    LEFT OUTER JOIN $ischool.booking.equip_application_detail AS app_detail
+        ON app_detail.ref_application_id = equip_app.uid
+    LEFT OUTER JOIN $ischool.booking.equip_io_history AS history
+        ON history.ref_app_detail_id = app_detail.uid
+";
+            sql += condition;
+
+            sql += @"
+ORDER BY
+    stats
+    , equip.property_no
+";
+            QueryHelper qh = new QueryHelper();
+            return qh.Select(sql);
+        }
     }
 }

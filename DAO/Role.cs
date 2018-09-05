@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FISCA.Data;
 using System.Data;
+using K12.Data;
 
 namespace Ischool.Booking.Equipment.DAO
 {
@@ -70,6 +71,25 @@ SELECT * FROM insert_role
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 更新角色權限
+        /// </summary>
+        /// <param name="roleID"></param>
+        public static void UpdateRole(string roleID)
+        {
+            string sql = string.Format(@"
+UPDATE 
+    _role
+SET
+    permission = '{0}'
+WHERE
+    id = {1}
+            ",Program._permission,roleID);
+
+            UpdateHelper up = new UpdateHelper();
+            up.Execute(sql);
         }
     }
 }

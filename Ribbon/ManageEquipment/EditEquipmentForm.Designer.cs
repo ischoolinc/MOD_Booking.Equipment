@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.tbxName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -45,7 +46,6 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnLeave = new DevComponents.DotNetBar.ButtonX();
             this.lbTime = new DevComponents.DotNetBar.LabelX();
-            this.lbErrorText = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.cbxStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem4 = new DevComponents.Editors.ComboItem();
@@ -53,7 +53,9 @@
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.tbxCategory = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cbxCategory = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX1
@@ -64,7 +66,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(12, 17);
+            this.labelX1.Location = new System.Drawing.Point(12, 22);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(75, 23);
             this.labelX1.TabIndex = 0;
@@ -77,9 +79,9 @@
             // 
             this.tbxName.Border.Class = "TextBoxBorder";
             this.tbxName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbxName.Location = new System.Drawing.Point(93, 16);
+            this.tbxName.Location = new System.Drawing.Point(93, 24);
             this.tbxName.Name = "tbxName";
-            this.tbxName.Size = new System.Drawing.Size(100, 25);
+            this.tbxName.Size = new System.Drawing.Size(120, 25);
             this.tbxName.TabIndex = 0;
             this.tbxName.TextChanged += new System.EventHandler(this.tbxName_TextChanged);
             // 
@@ -91,7 +93,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(239, 60);
+            this.labelX2.Location = new System.Drawing.Point(239, 66);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 2;
@@ -104,9 +106,9 @@
             // 
             this.tbxPropertyNo.Border.Class = "TextBoxBorder";
             this.tbxPropertyNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbxPropertyNo.Location = new System.Drawing.Point(345, 59);
+            this.tbxPropertyNo.Location = new System.Drawing.Point(345, 65);
             this.tbxPropertyNo.Name = "tbxPropertyNo";
-            this.tbxPropertyNo.Size = new System.Drawing.Size(100, 25);
+            this.tbxPropertyNo.Size = new System.Drawing.Size(120, 25);
             this.tbxPropertyNo.TabIndex = 2;
             this.tbxPropertyNo.TextChanged += new System.EventHandler(this.tbxPropertyNo_TextChanged);
             // 
@@ -117,9 +119,9 @@
             // 
             this.tbxModelNo.Border.Class = "TextBoxBorder";
             this.tbxModelNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbxModelNo.Location = new System.Drawing.Point(345, 99);
+            this.tbxModelNo.Location = new System.Drawing.Point(345, 106);
             this.tbxModelNo.Name = "tbxModelNo";
-            this.tbxModelNo.Size = new System.Drawing.Size(103, 25);
+            this.tbxModelNo.Size = new System.Drawing.Size(120, 25);
             this.tbxModelNo.TabIndex = 4;
             // 
             // tbxCompany
@@ -129,9 +131,9 @@
             // 
             this.tbxCompany.Border.Class = "TextBoxBorder";
             this.tbxCompany.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbxCompany.Location = new System.Drawing.Point(93, 99);
+            this.tbxCompany.Location = new System.Drawing.Point(93, 106);
             this.tbxCompany.Name = "tbxCompany";
-            this.tbxCompany.Size = new System.Drawing.Size(100, 25);
+            this.tbxCompany.Size = new System.Drawing.Size(120, 25);
             this.tbxCompany.TabIndex = 3;
             // 
             // tbxDeadLine
@@ -141,9 +143,9 @@
             // 
             this.tbxDeadLine.Border.Class = "TextBoxBorder";
             this.tbxDeadLine.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbxDeadLine.Location = new System.Drawing.Point(345, 140);
+            this.tbxDeadLine.Location = new System.Drawing.Point(345, 147);
             this.tbxDeadLine.Name = "tbxDeadLine";
-            this.tbxDeadLine.Size = new System.Drawing.Size(59, 25);
+            this.tbxDeadLine.Size = new System.Drawing.Size(76, 25);
             this.tbxDeadLine.TabIndex = 6;
             this.tbxDeadLine.TextChanged += new System.EventHandler(this.tbxDeadLine_TextChanged);
             // 
@@ -155,7 +157,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(12, 100);
+            this.labelX3.Location = new System.Drawing.Point(12, 107);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(75, 23);
             this.labelX3.TabIndex = 8;
@@ -169,7 +171,7 @@
             // 
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(239, 100);
+            this.labelX4.Location = new System.Drawing.Point(239, 107);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 9;
@@ -183,7 +185,7 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(12, 141);
+            this.labelX5.Location = new System.Drawing.Point(12, 148);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(75, 23);
             this.labelX5.TabIndex = 10;
@@ -197,7 +199,7 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(239, 141);
+            this.labelX6.Location = new System.Drawing.Point(239, 148);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(100, 23);
             this.labelX6.TabIndex = 11;
@@ -211,7 +213,7 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(12, 182);
+            this.labelX7.Location = new System.Drawing.Point(12, 189);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(75, 23);
             this.labelX7.TabIndex = 12;
@@ -225,7 +227,7 @@
             // 
             this.labelX8.BackgroundStyle.Class = "";
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(277, 14);
+            this.labelX8.Location = new System.Drawing.Point(296, 22);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(62, 23);
             this.labelX8.TabIndex = 13;
@@ -238,9 +240,9 @@
             // 
             this.tbxPlace.Border.Class = "TextBoxBorder";
             this.tbxPlace.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbxPlace.Location = new System.Drawing.Point(93, 181);
+            this.tbxPlace.Location = new System.Drawing.Point(93, 188);
             this.tbxPlace.Name = "tbxPlace";
-            this.tbxPlace.Size = new System.Drawing.Size(355, 25);
+            this.tbxPlace.Size = new System.Drawing.Size(372, 25);
             this.tbxPlace.TabIndex = 7;
             // 
             // btnSave
@@ -249,7 +251,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(292, 249);
+            this.btnSave.Location = new System.Drawing.Point(319, 244);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -263,7 +265,7 @@
             this.btnLeave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLeave.BackColor = System.Drawing.Color.Transparent;
             this.btnLeave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLeave.Location = new System.Drawing.Point(373, 249);
+            this.btnLeave.Location = new System.Drawing.Point(400, 244);
             this.btnLeave.Name = "btnLeave";
             this.btnLeave.Size = new System.Drawing.Size(75, 23);
             this.btnLeave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -279,27 +281,11 @@
             // 
             this.lbTime.BackgroundStyle.Class = "";
             this.lbTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTime.Location = new System.Drawing.Point(363, 14);
+            this.lbTime.Location = new System.Drawing.Point(383, 22);
             this.lbTime.Name = "lbTime";
             this.lbTime.Size = new System.Drawing.Size(82, 23);
             this.lbTime.TabIndex = 17;
             this.lbTime.Text = "labelX9";
-            // 
-            // lbErrorText
-            // 
-            this.lbErrorText.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.lbErrorText.BackgroundStyle.Class = "";
-            this.lbErrorText.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbErrorText.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorText.Location = new System.Drawing.Point(12, 249);
-            this.lbErrorText.Name = "lbErrorText";
-            this.lbErrorText.Size = new System.Drawing.Size(274, 23);
-            this.lbErrorText.TabIndex = 18;
-            this.lbErrorText.Text = "errorText";
-            this.lbErrorText.Visible = false;
             // 
             // labelX10
             // 
@@ -309,7 +295,7 @@
             // 
             this.labelX10.BackgroundStyle.Class = "";
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(410, 141);
+            this.labelX10.Location = new System.Drawing.Point(427, 148);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(38, 23);
             this.labelX10.TabIndex = 19;
@@ -326,9 +312,9 @@
             this.comboItem1,
             this.comboItem2,
             this.comboItem3});
-            this.cbxStatus.Location = new System.Drawing.Point(93, 140);
+            this.cbxStatus.Location = new System.Drawing.Point(93, 147);
             this.cbxStatus.Name = "cbxStatus";
-            this.cbxStatus.Size = new System.Drawing.Size(100, 25);
+            this.cbxStatus.Size = new System.Drawing.Size(120, 25);
             this.cbxStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbxStatus.TabIndex = 5;
             // 
@@ -356,34 +342,37 @@
             // 
             this.labelX9.BackgroundStyle.Class = "";
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(12, 60);
+            this.labelX9.Location = new System.Drawing.Point(12, 66);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(75, 23);
             this.labelX9.TabIndex = 21;
             this.labelX9.Text = "設備類別";
             // 
-            // tbxCategory
+            // cbxCategory
             // 
+            this.cbxCategory.DisplayMember = "Text";
+            this.cbxCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbxCategory.FormattingEnabled = true;
+            this.cbxCategory.ItemHeight = 19;
+            this.cbxCategory.Location = new System.Drawing.Point(93, 65);
+            this.cbxCategory.Name = "cbxCategory";
+            this.cbxCategory.Size = new System.Drawing.Size(120, 25);
+            this.cbxCategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbxCategory.TabIndex = 1;
             // 
+            // errorProvider1
             // 
-            // 
-            this.tbxCategory.Border.Class = "TextBoxBorder";
-            this.tbxCategory.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbxCategory.Location = new System.Drawing.Point(93, 59);
-            this.tbxCategory.Name = "tbxCategory";
-            this.tbxCategory.Size = new System.Drawing.Size(100, 25);
-            this.tbxCategory.TabIndex = 1;
+            this.errorProvider1.ContainerControl = this;
             // 
             // EditEquipmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 284);
-            this.Controls.Add(this.tbxCategory);
+            this.ClientSize = new System.Drawing.Size(487, 279);
+            this.Controls.Add(this.cbxCategory);
             this.Controls.Add(this.labelX9);
             this.Controls.Add(this.cbxStatus);
             this.Controls.Add(this.labelX10);
-            this.Controls.Add(this.lbErrorText);
             this.Controls.Add(this.lbTime);
             this.Controls.Add(this.btnLeave);
             this.Controls.Add(this.btnSave);
@@ -405,6 +394,7 @@
             this.Name = "EditEquipmentForm";
             this.Text = "EditEquipmentForm";
             this.Load += new System.EventHandler(this.EditEquipmentForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -428,7 +418,6 @@
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.ButtonX btnLeave;
         private DevComponents.DotNetBar.LabelX lbTime;
-        private DevComponents.DotNetBar.LabelX lbErrorText;
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbxStatus;
         private DevComponents.Editors.ComboItem comboItem1;
@@ -436,6 +425,7 @@
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.DotNetBar.LabelX labelX9;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbxCategory;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbxCategory;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

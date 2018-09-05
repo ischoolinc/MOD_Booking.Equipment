@@ -31,6 +31,8 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.lbTimeNow = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.tbxPlace = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.tbxModel = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbxCategory = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbxCompany = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -91,6 +93,8 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.tbxPlace);
+            this.groupPanel1.Controls.Add(this.labelX12);
             this.groupPanel1.Controls.Add(this.tbxModel);
             this.groupPanel1.Controls.Add(this.tbxCategory);
             this.groupPanel1.Controls.Add(this.tbxCompany);
@@ -103,7 +107,7 @@
             this.groupPanel1.Location = new System.Drawing.Point(3, 55);
             this.groupPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(452, 131);
+            this.groupPanel1.Size = new System.Drawing.Size(452, 162);
             // 
             // 
             // 
@@ -137,6 +141,32 @@
             this.groupPanel1.TabIndex = 2;
             this.groupPanel1.Text = "設備基本資料";
             // 
+            // tbxPlace
+            // 
+            // 
+            // 
+            // 
+            this.tbxPlace.Border.Class = "TextBoxBorder";
+            this.tbxPlace.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxPlace.Enabled = false;
+            this.tbxPlace.Location = new System.Drawing.Point(97, 95);
+            this.tbxPlace.Name = "tbxPlace";
+            this.tbxPlace.Size = new System.Drawing.Size(333, 23);
+            this.tbxPlace.TabIndex = 9;
+            // 
+            // labelX12
+            // 
+            // 
+            // 
+            // 
+            this.labelX12.BackgroundStyle.Class = "";
+            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX12.Location = new System.Drawing.Point(3, 95);
+            this.labelX12.Name = "labelX12";
+            this.labelX12.Size = new System.Drawing.Size(75, 23);
+            this.labelX12.TabIndex = 8;
+            this.labelX12.Text = "放置位置";
+            // 
             // tbxModel
             // 
             // 
@@ -144,6 +174,7 @@
             // 
             this.tbxModel.Border.Class = "TextBoxBorder";
             this.tbxModel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxModel.Enabled = false;
             this.tbxModel.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxModel.Location = new System.Drawing.Point(330, 52);
             this.tbxModel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -158,6 +189,7 @@
             // 
             this.tbxCategory.Border.Class = "TextBoxBorder";
             this.tbxCategory.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxCategory.Enabled = false;
             this.tbxCategory.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxCategory.Location = new System.Drawing.Point(330, 12);
             this.tbxCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -172,6 +204,7 @@
             // 
             this.tbxCompany.Border.Class = "TextBoxBorder";
             this.tbxCompany.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxCompany.Enabled = false;
             this.tbxCompany.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxCompany.Location = new System.Drawing.Point(97, 52);
             this.tbxCompany.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -186,6 +219,7 @@
             // 
             this.tbxEquipName.Border.Class = "TextBoxBorder";
             this.tbxEquipName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxEquipName.Enabled = false;
             this.tbxEquipName.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxEquipName.Location = new System.Drawing.Point(97, 12);
             this.tbxEquipName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -274,7 +308,7 @@
             this.groupPanel2.Controls.Add(this.labelX7);
             this.groupPanel2.Controls.Add(this.labelX6);
             this.groupPanel2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupPanel2.Location = new System.Drawing.Point(3, 194);
+            this.groupPanel2.Location = new System.Drawing.Point(3, 225);
             this.groupPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(452, 235);
@@ -318,6 +352,7 @@
             // 
             this.tbxendTime.Border.Class = "TextBoxBorder";
             this.tbxendTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxendTime.Enabled = false;
             this.tbxendTime.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxendTime.Location = new System.Drawing.Point(285, 75);
             this.tbxendTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -348,6 +383,7 @@
             // 
             this.tbxReason.Border.Class = "TextBoxBorder";
             this.tbxReason.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxReason.Enabled = false;
             this.tbxReason.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxReason.Location = new System.Drawing.Point(97, 149);
             this.tbxReason.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -363,6 +399,7 @@
             // 
             this.tbxStarTime.Border.Class = "TextBoxBorder";
             this.tbxStarTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxStarTime.Enabled = false;
             this.tbxStarTime.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxStarTime.Location = new System.Drawing.Point(97, 75);
             this.tbxStarTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -377,6 +414,7 @@
             // 
             this.tbxBorrowTime.Border.Class = "TextBoxBorder";
             this.tbxBorrowTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxBorrowTime.Enabled = false;
             this.tbxBorrowTime.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxBorrowTime.Location = new System.Drawing.Point(97, 112);
             this.tbxBorrowTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -391,6 +429,7 @@
             // 
             this.tbxApplyTime.Border.Class = "TextBoxBorder";
             this.tbxApplyTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxApplyTime.Enabled = false;
             this.tbxApplyTime.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxApplyTime.Location = new System.Drawing.Point(97, 38);
             this.tbxApplyTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -405,6 +444,7 @@
             // 
             this.tbxApplicant.Border.Class = "TextBoxBorder";
             this.tbxApplicant.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxApplicant.Enabled = false;
             this.tbxApplicant.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxApplicant.Location = new System.Drawing.Point(97, 3);
             this.tbxApplicant.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -497,7 +537,7 @@
             this.btnReturn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnReturn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnReturn.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnReturn.Location = new System.Drawing.Point(360, 437);
+            this.btnReturn.Location = new System.Drawing.Point(360, 468);
             this.btnReturn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(95, 30);
@@ -519,7 +559,7 @@
             this.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ReturnEquipment";
-            this.Size = new System.Drawing.Size(471, 478);
+            this.Size = new System.Drawing.Size(471, 508);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -553,5 +593,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tbxendTime;
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.ButtonX btnReturn;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbxPlace;
+        private DevComponents.DotNetBar.LabelX labelX12;
     }
 }

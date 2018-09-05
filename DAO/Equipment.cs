@@ -9,7 +9,7 @@ using FISCA.UDT;
 
 namespace Ischool.Booking.Equipment.DAO
 {
-    class EquipmentDAO
+    class Equipment
     {
         private static Dictionary<string, UDT.Equipment> dicEquipments;
 
@@ -29,6 +29,14 @@ namespace Ischool.Booking.Equipment.DAO
             }
 
             return dicEquipments;
+        }
+
+        public static DataTable GetCategory()
+        {
+            string sql = @"SELECT DISTINCT category FROM $ischool.booking.equipment WHERE category IS NOT NULL AND category <> ''";
+            QueryHelper qh = new QueryHelper();
+
+            return qh.Select(sql);
         }
 
         /// <summary>
@@ -85,7 +93,7 @@ WHERE
     ref_unit_id = {0}
 ORDER BY
 	category
-	--, property_no
+	, property_no
     , company
     , model_no
             ", unitID);

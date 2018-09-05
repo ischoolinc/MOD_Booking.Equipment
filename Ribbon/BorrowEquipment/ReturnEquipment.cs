@@ -38,11 +38,15 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
             ClearTbxData();
             AccessHelper access = new AccessHelper();
             List<UDT.Equipment> listEquipData = access.Select<UDT.Equipment>(string.Format("uid = {0}", equipID));
-            // 設備基本資料
+
+            #region 設備基本資料
             tbxEquipName.Text = listEquipData[0].Name;
             tbxCategory.Text = listEquipData[0].Category;
             tbxCompany.Text = listEquipData[0].Company;
             tbxModel.Text = listEquipData[0].ModelNo;
+            tbxPlace.Text = listEquipData[0].Place; 
+            #endregion
+
             // 出借紀錄
             DataTable dt = DAO.EquipIOHistory.GetBorrowData(equipID);
             if (dt.Rows.Count > 0)

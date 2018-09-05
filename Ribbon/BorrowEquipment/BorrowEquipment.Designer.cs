@@ -51,6 +51,8 @@
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.btnBorrow = new DevComponents.DotNetBar.ButtonX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.tbxPlace = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +88,8 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.tbxPlace);
+            this.groupPanel1.Controls.Add(this.labelX2);
             this.groupPanel1.Controls.Add(this.tbxModel);
             this.groupPanel1.Controls.Add(this.tbxCategory);
             this.groupPanel1.Controls.Add(this.tbxCompany);
@@ -96,7 +100,7 @@
             this.groupPanel1.Controls.Add(this.labelX3);
             this.groupPanel1.Location = new System.Drawing.Point(3, 55);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(452, 131);
+            this.groupPanel1.Size = new System.Drawing.Size(452, 162);
             // 
             // 
             // 
@@ -248,7 +252,7 @@
             this.groupPanel2.Controls.Add(this.labelX9);
             this.groupPanel2.Controls.Add(this.labelX8);
             this.groupPanel2.Controls.Add(this.labelX7);
-            this.groupPanel2.Location = new System.Drawing.Point(3, 192);
+            this.groupPanel2.Location = new System.Drawing.Point(3, 223);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(452, 217);
             // 
@@ -420,13 +424,39 @@
             this.btnBorrow.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnBorrow.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnBorrow.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnBorrow.Location = new System.Drawing.Point(360, 415);
+            this.btnBorrow.Location = new System.Drawing.Point(360, 446);
             this.btnBorrow.Name = "btnBorrow";
             this.btnBorrow.Size = new System.Drawing.Size(95, 30);
             this.btnBorrow.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnBorrow.TabIndex = 4;
             this.btnBorrow.Text = "確定借出";
             this.btnBorrow.Click += new System.EventHandler(this.btnBorrow_Click);
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(3, 95);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(60, 23);
+            this.labelX2.TabIndex = 8;
+            this.labelX2.Text = "放置位置";
+            // 
+            // tbxPlace
+            // 
+            // 
+            // 
+            // 
+            this.tbxPlace.Border.Class = "TextBoxBorder";
+            this.tbxPlace.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxPlace.Enabled = false;
+            this.tbxPlace.Location = new System.Drawing.Point(100, 94);
+            this.tbxPlace.Name = "tbxPlace";
+            this.tbxPlace.Size = new System.Drawing.Size(331, 25);
+            this.tbxPlace.TabIndex = 9;
             // 
             // BorrowEquipment
             // 
@@ -441,7 +471,7 @@
             this.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "BorrowEquipment";
-            this.Size = new System.Drawing.Size(471, 478);
+            this.Size = new System.Drawing.Size(471, 501);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -473,5 +503,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tbxStarTime;
         private DevComponents.DotNetBar.Controls.TextBoxX tbxApplyTime;
         private DevComponents.DotNetBar.Controls.TextBoxX tbxApplicant;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbxPlace;
     }
 }

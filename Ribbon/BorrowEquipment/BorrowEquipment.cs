@@ -45,7 +45,7 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
             tbxCategory.Text = listEquip[0].Category;
             tbxCompany.Text = listEquip[0].Company;
             tbxModel.Text = listEquip[0].ModelNo;
-
+            tbxPlace.Text = listEquip[0].Place;
             #endregion
 
             #region 申請紀錄
@@ -107,6 +107,5 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
                 
             }
         }
-        
     }
 }

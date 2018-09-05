@@ -46,6 +46,7 @@ namespace Ischool.Booking.Equipment
 <Feature Code=""A5E99F9B-A6AB-40A5-BB02-5BB8674C69F0"" Permission=""Execute""/>
 <Feature Code=""81A459CC-50DB-4891-9728-26B5A4F9E9B2"" Permission=""Execute""/>
 <Feature Code=""1C4BD840-DFF1-4CF0-A8F9-DC0462F4DC2A"" Permission=""Execute""/>
+<Feature Code=""CC10DD70-5DF0-421C-9234-0A2FD0BC0B1F"" Permission=""Execute""/>
 </Permissions>
 ";
 
@@ -95,6 +96,10 @@ namespace Ischool.Booking.Equipment
                 {
                     _roleAdminID = DAO.Role.InsertRole(_roleAdminName,"",_permission);
                 }
+                else // 更新角色權限
+                {
+                    DAO.Role.UpdateRole(_roleAdminID);
+                }
             }
             #endregion
 
@@ -104,6 +109,10 @@ namespace Ischool.Booking.Equipment
                 if (!DAO.Role.CheckIsRoleExist(_roleName))
                 {
                     _roleID = DAO.Role.InsertRole(_roleName,"",_permission);   
+                }
+                else // 更新角色權限
+                {
+                    DAO.Role.UpdateRole(_roleID);
                 }
             }
             #endregion
@@ -130,9 +139,11 @@ namespace Ischool.Booking.Equipment
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯入"].Image = Properties.Resources.Import_Image;
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["報表"].Size = RibbonBarButton.MenuButtonSize.Large;
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["報表"].Image = Properties.Resources.Report;
+                MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["查詢出借紀錄"].Size = RibbonBarButton.MenuButtonSize.Large;
+                MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["查詢出借紀錄"].Image = Properties.Resources.barcode_zoom_128;
                 MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["設備出借/歸還"].Size = RibbonBarButton.MenuButtonSize.Large;
                 MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["設備出借/歸還"].Image = Properties.Resources.barcode_ok_128;
-
+                
                 #region 設定管理單位
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定管理單位"].Enable = Permissions.設定管理單位權限;
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定管理單位"].Click += delegate
@@ -166,7 +177,7 @@ namespace Ischool.Booking.Equipment
                 };
                 #endregion
 
-                #region 管理設備
+                #region 設備管理
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設備管理"].Enable = Permissions.管理設備權限;
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設備管理"].Click += delegate
                 {
@@ -185,8 +196,8 @@ namespace Ischool.Booking.Equipment
                 #region 資料統計
 
                 #region 匯出設備清單
-                MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯出"]["設備清單"].Enable = Permissions.匯出設備清單權限;
-                MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯出"]["設備清單"].Click += delegate
+                MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯出"]["匯出設備清單"].Enable = Permissions.匯出設備清單權限;
+                MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯出"]["匯出設備清單"].Click += delegate
                 {
                     if (actor.isSysAdmin() || actor.isUnitAdmin())
                     {
@@ -201,8 +212,8 @@ namespace Ischool.Booking.Equipment
                 #endregion
 
                 #region 匯入設備清單
-                MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯入"]["設備清單"].Enable = Permissions.匯入設備清單權限;
-                MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯入"]["設備清單"].Click += delegate
+                MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯入"]["匯入設備清單"].Enable = Permissions.匯入設備清單權限;
+                MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯入"]["匯入設備清單"].Click += delegate
                 {
                     if (actor.isSysAdmin() || actor.isUnitAdmin())
                     {
@@ -233,6 +244,23 @@ namespace Ischool.Booking.Equipment
 
                 #endregion
 
+                #region 查詢設備出借紀錄
+                {
+                    MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["查詢出借紀錄"].Enable = Permissions.查詢出借紀錄權限;
+                    MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["查詢出借紀錄"].Click += delegate
+                    {
+                        if (actor.isSysAdmin() || actor.isUnitAdmin())
+                        {
+                            (new frmSearchApplication()).ShowDialog();
+                        }
+                        else
+                        {
+                            MsgBox.Show("此帳號沒有設備出借權限");
+                        }
+                    };
+                }
+                #endregion
+
                 #region 設備出借/歸還
                 MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["設備出借/歸還"].Enable = Permissions.設備出借歸還權限;
                 MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["設備出借/歸還"].Click += delegate
@@ -246,25 +274,7 @@ namespace Ischool.Booking.Equipment
                     {
                         MsgBox.Show("此帳號沒有設備出借權限");
                     }
-                }; 
-                #endregion
-
-                #region 需求待討論
-
-                //borrowItem["設備申請紀錄管理"].Size = RibbonBarButton.MenuButtonSize.Large;
-                //borrowItem["設備申請紀錄管理"].Image = Properties.Resources.photoshop_write_64;
-                //borrowItem["設備申請紀錄管理"].Click += delegate
-                //{
-                //    if (actor.isSysAdmin() || actor.isUnitAdmin())
-                //    {
-
-                //    }
-                //    else
-                //    {
-                //        MsgBox.Show("此帳號沒有設備申請紀錄管理權限");
-                //    }
-                //};
-
+                };
                 #endregion
             }
             #endregion
@@ -279,6 +289,7 @@ namespace Ischool.Booking.Equipment
             detail.Add(new RibbonFeature(Permissions.匯入設備清單, "匯入設備清單"));
             detail.Add(new RibbonFeature(Permissions.統計設備使用狀況, "統計設備使用狀況"));
             detail.Add(new RibbonFeature(Permissions.設備出借歸還, "設備出借歸還"));
+            detail.Add(new RibbonFeature(Permissions.查詢出借紀錄, "查詢出借紀錄"));
             #endregion
 
         }

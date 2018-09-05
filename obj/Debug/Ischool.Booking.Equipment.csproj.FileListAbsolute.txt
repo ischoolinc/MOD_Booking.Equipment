@@ -32,3 +32,4 @@ D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csproj.CoreCompileInputs.cache
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.dll
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.pdb
+D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.frmSearchApplication.resources

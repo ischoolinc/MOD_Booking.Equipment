@@ -69,5 +69,14 @@ namespace Ischool.Booking.Equipment
                 return FISCA.Permission.UserAcl.Current[設備出借歸還].Executable;
             }
         }
+
+        public static string 查詢出借紀錄 { get { return "CC10DD70-5DF0-421C-9234-0A2FD0BC0B1F"; } }
+        public static bool 查詢出借紀錄權限
+        {
+            get
+            {
+                return FISCA.Permission.UserAcl.Current[查詢出借紀錄].Executable;
+            }
+        }
     }
 }

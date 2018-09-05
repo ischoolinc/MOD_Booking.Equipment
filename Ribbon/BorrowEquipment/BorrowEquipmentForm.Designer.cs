@@ -13,8 +13,8 @@
             this.lberror = new DevComponents.DotNetBar.LabelX();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.borrowEquipment1 = new Ischool.Booking.Equipment.Ribbon.BorrowEquipment.BorrowEquipment();
             this.returnEquipment1 = new Ischool.Booking.Equipment.Ribbon.BorrowEquipment.ReturnEquipment();
+            this.borrowEquipment1 = new Ischool.Booking.Equipment.Ribbon.BorrowEquipment.BorrowEquipment();
             this.SuspendLayout();
             // 
             // labelX1
@@ -74,6 +74,7 @@
             this.tbxPropertyNo.Size = new System.Drawing.Size(251, 27);
             this.tbxPropertyNo.TabIndex = 5;
             this.tbxPropertyNo.TextChanged += new System.EventHandler(this.tbxPropertyNo_TextChanged);
+            this.tbxPropertyNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxPropertyNo_KeyDown);
             // 
             // lberror
             // 
@@ -120,34 +121,33 @@
             this.labelX2.Text = "-----------------------------------搜尋結果-----------------------------------";
             this.labelX2.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // borrowEquipment1
-            // 
-            this.borrowEquipment1.BackColor = System.Drawing.Color.Transparent;
-            this.borrowEquipment1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.borrowEquipment1.Location = new System.Drawing.Point(12, 171);
-            this.borrowEquipment1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.borrowEquipment1.Name = "borrowEquipment1";
-            this.borrowEquipment1.Size = new System.Drawing.Size(471, 478);
-            this.borrowEquipment1.TabIndex = 10;
-            this.borrowEquipment1.Visible = false;
-            // 
             // returnEquipment1
             // 
             this.returnEquipment1.BackColor = System.Drawing.Color.Transparent;
             this.returnEquipment1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.returnEquipment1.Location = new System.Drawing.Point(12, 167);
+            this.returnEquipment1.Location = new System.Drawing.Point(12, 170);
             this.returnEquipment1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.returnEquipment1.Name = "returnEquipment1";
-            this.returnEquipment1.Size = new System.Drawing.Size(471, 478);
+            this.returnEquipment1.Size = new System.Drawing.Size(471, 508);
             this.returnEquipment1.TabIndex = 11;
             this.returnEquipment1.Visible = false;
+            // 
+            // borrowEquipment1
+            // 
+            this.borrowEquipment1.BackColor = System.Drawing.Color.Transparent;
+            this.borrowEquipment1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.borrowEquipment1.Location = new System.Drawing.Point(12, 170);
+            this.borrowEquipment1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.borrowEquipment1.Name = "borrowEquipment1";
+            this.borrowEquipment1.Size = new System.Drawing.Size(471, 501);
+            this.borrowEquipment1.TabIndex = 10;
+            this.borrowEquipment1.Visible = false;
             // 
             // BorrowEquipmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 644);
-            this.Controls.Add(this.returnEquipment1);
+            this.ClientSize = new System.Drawing.Size(494, 693);
             this.Controls.Add(this.borrowEquipment1);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.btnSearch);
@@ -156,6 +156,7 @@
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.lbIdentity);
             this.Controls.Add(this.labelX1);
+            this.Controls.Add(this.returnEquipment1);
             this.DoubleBuffered = true;
             this.Name = "BorrowEquipmentForm";
             this.Text = "設備出借/歸還";

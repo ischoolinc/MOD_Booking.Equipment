@@ -33,7 +33,7 @@ namespace Ischool.Booking.Equipment
             #endregion
 
             // 取得資料
-            DataTable dt = DAO.EquipmentDAO.GetAllEquipment();
+            DataTable dt = DAO.Equipment.GetAllEquipment();
 
             // 寫入資料
             Workbook report = new Workbook();
@@ -82,7 +82,7 @@ namespace Ischool.Booking.Equipment
                             case "放置位置":
                                 report.Worksheets[0].Cells[rowIndex, col].PutValue("" + row["place"]);
                                 break;
-                            case "管理單位編號":
+                            case "管理單位系統編號":
                                 report.Worksheets[0].Cells[rowIndex, col].PutValue("" + row["ref_unit_id"]);
                                 break;
                             case "管理單位名稱":

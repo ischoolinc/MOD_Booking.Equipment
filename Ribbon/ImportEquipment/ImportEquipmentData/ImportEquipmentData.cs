@@ -68,7 +68,7 @@ namespace Ischool.Booking.Equipment
                 string propertyNo = Row.GetValue("財產編號");
                 string key = string.Format("{0}", propertyNo); // 設備key
 
-                Dictionary<string, UDT.Equipment> dicEquips = DAO.EquipmentDAO.GetEquipments();
+                Dictionary<string, UDT.Equipment> dicEquips = DAO.Equipment.GetEquipments();
                 
                 //更新
                 if (dicEquips.ContainsKey(key)) 

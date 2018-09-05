@@ -62,13 +62,20 @@ namespace Ischool.Booking.Equipment
                 List<UDT.Equipment>EquipInfo = access.Select<UDT.Equipment>(string.Format("uid = {0}",_equipID));
 
                 tbxName.Text = EquipInfo[0].Name;
-                tbxCategory.Text = EquipInfo[0].Category;
+                cbxCategory.Text = EquipInfo[0].Category;
                 tbxPropertyNo.Text = EquipInfo[0].PropertyNo;
                 tbxCompany.Text = EquipInfo[0].Company;
                 tbxModelNo.Text = EquipInfo[0].ModelNo;
                 cbxStatus.Text = EquipInfo[0].Status;
                 tbxDeadLine.Text = "" + EquipInfo[0].DeadLine;
                 tbxPlace.Text = EquipInfo[0].Place;
+            }
+
+            // Init CbxCategory Items
+            DataTable dt = DAO.Equipment.GetCategory();
+            foreach (DataRow row in dt.Rows)
+            {
+                cbxCategory.Items.Add("" + row["category"]);
             }
         }
 
@@ -81,7 +88,8 @@ namespace Ischool.Booking.Equipment
                 {
                     try
                     {
-                        DAO.EquipmentDAO.InsertUnitEquipment(tbxName.Text, tbxCategory.Text,tbxPropertyNo.Text, tbxCompany.Text, tbxModelNo.Text, cbxStatus.Text, tbxDeadLine.Text, tbxPlace.Text, _unitID);
+                        DAO.Equipment.InsertUnitEquipment(tbxName.Text.Trim(), cbxCategory.Text.Trim(),tbxPropertyNo.Text.Trim(), tbxCompany.Text.Trim(), 
+                            tbxModelNo.Text.Trim(), cbxStatus.Text.Trim(), tbxDeadLine.Text.Trim(), tbxPlace.Text.Trim(), _unitID);
                         MsgBox.Show("儲存成功!");
                         this.Close();
                     }
@@ -95,7 +103,8 @@ namespace Ischool.Booking.Equipment
                 {
                     try
                     {
-                        DAO.EquipmentDAO.UpdateUnitEquipment(tbxName.Text,tbxCategory.Text,tbxPropertyNo.Text,tbxCompany.Text,tbxModelNo.Text,cbxStatus.Text,tbxDeadLine.Text,tbxPlace.Text,_unitID,_equipID);
+                        DAO.Equipment.UpdateUnitEquipment(tbxName.Text.Trim(), cbxCategory.Text.Trim(),tbxPropertyNo.Text.Trim(),tbxCompany.Text.Trim(),
+                            tbxModelNo.Text.Trim(),cbxStatus.Text.Trim(),tbxDeadLine.Text.Trim(),tbxPlace.Text.Trim(),_unitID,_equipID);
                         MsgBox.Show("儲存成功!");
                         this.Close();
                     }
@@ -109,106 +118,92 @@ namespace Ischool.Booking.Equipment
 
         private bool DataVerify()
         {
-            if (!CheckTbxName())
-            {
-                return false;
-            }
-            else if (!CheckTbxPropertyNo())
-            {
-                return false;
-            }
-            else if (!CheckTbxDeadline())
-            {
-                return false;
-            }
-            else
+            if (TbxName_Validate() && TbxPropertyNo_Validate() && TbxDeadline_Validate())
             {
                 return true;
             }
-            
-        }
-
-
-        private void btnLeave_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            else
+            {
+                return false;
+            }
         }
 
         private void tbxName_TextChanged(object sender, EventArgs e)
         {
-            CheckTbxName();
+            TbxName_Validate();
         }
 
         private void tbxPropertyNo_TextChanged(object sender, EventArgs e)
         {
-            CheckTbxPropertyNo();
+            TbxPropertyNo_Validate();
         }
 
         private void tbxDeadLine_TextChanged(object sender, EventArgs e)
         {
-            CheckTbxDeadline();
+            TbxDeadline_Validate();
         }
 
-        public bool CheckTbxName()
+        private bool TbxName_Validate()
         {
             // 設備名稱不能空白
-            if (tbxName.Text.Trim() == "")
+            if (string.IsNullOrEmpty(tbxName.Text.Trim()))
             {
-                lbErrorText.Text = "設備名稱不能空白!";
-                lbErrorText.Visible = true;
+                errorProvider1.SetError(tbxName, "設備名稱不能空白!");
                 btnSave.Enabled = false;
                 return false;
             }
             else
             {
+                errorProvider1.SetError(tbxName,null);
                 btnSave.Enabled = true;
-                lbErrorText.Visible = false;
                 return true;
             }
         }
 
-        public bool CheckTbxPropertyNo()
+        private bool TbxPropertyNo_Validate()
         {
             // 財產編號不能重複、不能空白
-            if (tbxPropertyNo.Text.Trim() == "")
+            if (string.IsNullOrEmpty(tbxPropertyNo.Text.Trim()))
             {
-                lbErrorText.Text = "財產編號不能空白!";
-                lbErrorText.Visible = true;
+                errorProvider1.SetError(tbxPropertyNo, "財產編號不能空白!");
                 btnSave.Enabled = false;
                 return false;
             }
             else if (listPropertyNo.Contains(tbxPropertyNo.Text))
             {
-                lbErrorText.Text = "財產編號重複!";
-                lbErrorText.Visible = true;
+                errorProvider1.SetError(tbxPropertyNo, "財產編號重複!");
                 btnSave.Enabled = false;
                 return false;
             }
             else
             {
+                errorProvider1.SetError(tbxPropertyNo,null);
                 btnSave.Enabled = true;
-                lbErrorText.Visible = false;
                 return true;
             }
         }
 
-        public bool CheckTbxDeadline()
+        private bool TbxDeadline_Validate()
         {
             // 未取用取消時間為數值
             int n = 0;
             if (!int.TryParse(tbxDeadLine.Text, out n))
             {
-                lbErrorText.Text = "未取用解除預約時間(分)為數值!";
-                lbErrorText.Visible = true;
+                errorProvider1.SetError(tbxDeadLine, "未取用解除預約時間(分)為數值!");
                 btnSave.Enabled = false;
                 return false;
             }
             else
             {
+                errorProvider1.SetError(tbxDeadLine,null);
                 btnSave.Enabled = true;
-                lbErrorText.Visible = false;
                 return true;
             }
+        }
+
+        private void btnLeave_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

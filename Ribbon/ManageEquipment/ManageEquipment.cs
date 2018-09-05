@@ -61,7 +61,7 @@ namespace Ischool.Booking.Equipment
         {
             dataGridViewX1.Rows.Clear();
 
-            DataTable dt = DAO.EquipmentDAO.GetUnitEquipment(unitID);
+            DataTable dt = DAO.Equipment.GetUnitEquipment(unitID);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -128,7 +128,7 @@ namespace Ischool.Booking.Equipment
                 {
                     try
                     {
-                        DAO.EquipmentDAO.DELETEUnitEquipment(equipID);
+                        DAO.Equipment.DELETEUnitEquipment(equipID);
                         MsgBox.Show("刪除成功!");
                         ReloadDataGridView(dicUnit[cbxUnit.Text]);
                     }

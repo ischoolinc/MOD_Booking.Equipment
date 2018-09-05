@@ -127,7 +127,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DAO\EquipIOHistory.cs" />
-    <Compile Include="DAO\EquipmentDAO.cs" />
+    <Compile Include="DAO\Equipment.cs" />
     <Compile Include="DAO\Role.cs" />
     <Compile Include="DAO\StatisticalReportDAO.cs" />
     <Compile Include="DAO\UnitAdminDAO.cs" />
@@ -160,6 +160,12 @@
     </Compile>
     <Compile Include="Ribbon\BorrowEquipment\BorrowEquipment.Designer.cs">
       <DependentUpon>BorrowEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\EquipApplications\frmSearchApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\EquipApplications\frmSearchApplication.Designer.cs">
+      <DependentUpon>frmSearchApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Ribbon\ExportEquipment\ExportEquipmentForm.cs">
       <SubType>Form</SubType>
@@ -295,6 +301,7 @@
     <Content Include="Library\SmartSchool.Customization.PlugIn.xml" />
     <Content Include="Library\SmartSchool.ErrorReporting.dll" />
     <Content Include="Library\SmartSchool.ErrorReporting.xml" />
+    <None Include="Resources\barcode_zoom_128.png" />
     <None Include="Resources\barcode_ok_128.png" />
     <None Include="Resources\meeting_config_64.png" />
     <None Include="Resources\college_config_64.png" />
@@ -334,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ribbon\BorrowEquipment\BorrowEquipment.resx">
       <DependentUpon>BorrowEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\EquipApplications\frmSearchApplication.resx">
+      <DependentUpon>frmSearchApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ribbon\ExportEquipment\ExportEquipmentForm.resx">
       <DependentUpon>ExportEquipmentForm.cs</DependentUpon>

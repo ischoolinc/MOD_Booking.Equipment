@@ -44,13 +44,13 @@ namespace Ischool.Booking.Equipment
             ucEquips.Add(this.borrowEquipment1);
             ucEquips.Add(this.returnEquipment1);
 
-            dicAllEquipments = DAO.EquipmentDAO.GetEquipments();
+            dicAllEquipments = DAO.Equipment.GetEquipments();
 
             if (actor.isSysAdmin())
             {
                 lbIdentity.Text = "設備預約模組管理者";
 
-                dicEquipments = DAO.EquipmentDAO.GetEquipments();
+                dicEquipments = DAO.Equipment.GetEquipments();
             }
             else if (actor.isUnitAdmin())
             {
@@ -61,7 +61,7 @@ namespace Ischool.Booking.Equipment
                     unitIDs.Add(unit.unitID);
                 }
 
-                dicEquipments = DAO.EquipmentDAO.GetEquipmentsByUnitIDs(unitIDs);
+                dicEquipments = DAO.Equipment.GetEquipmentsByUnitIDs(unitIDs);
             }
         }
 
@@ -108,28 +108,6 @@ namespace Ischool.Booking.Equipment
             IEquipUserControl uc = this.getUserCotnrol(dao.IsBorrow());
             uc.SetVisible(true);
             uc.SetEquipID(equipID);
-
-            // b. 設備已出借 : 讀取出借紀錄 
-            //if (dao.IsBorrow())
-            //{
-            //    returnUserControl1.Visible = false;
-            //    borrowUserControl1.Visible = true;
-            //    borrowUserControl1.SetEquipID();
-            //    //EditEquipIOForm form = new EditEquipIOForm(equipID);
-            //    //form.Text = "設備歸還";
-            //    //form.ShowDialog();
-            //}
-            // a. 設備已歸還 : 讀取當天設備預約紀錄
-            //else
-            //{
-            //    borrowUserControl1.Visible = false;
-            //    returnUserControl1.Visible = true;
-            //    returnUserControl1.SetEquipID();
-            //    //ApplicationForm form = new ApplicationForm(equipID);
-            //    //form.Text = string.Format("{1}設備  {0} 申請紀錄", DateTime.Now.ToShortDateString(), equipName);
-            //    //form.ShowDialog();
-            //}
-
         }
 
         private IEquipUserControl getUserCotnrol(bool isBorrowed)
@@ -149,6 +127,17 @@ namespace Ischool.Booking.Equipment
             foreach(IEquipUserControl uc in this.ucEquips)
             {
                 uc.SetVisible(false);
+            }
+        }
+
+        private void tbxPropertyNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (btnSearch.Enabled)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    btnSearch_Click(sender,e);
+                }
             }
         }
     }
