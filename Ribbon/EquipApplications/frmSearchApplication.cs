@@ -26,11 +26,11 @@ namespace Ischool.Booking.Equipment
         private void frmSearchApplication_Load(object sender, EventArgs e)
         {
             // Init Stats Cbx
-            cbxApplicationStats.Items.Add("全部");
-            cbxApplicationStats.Items.Add("預約");
-            cbxApplicationStats.Items.Add("出借中");
-            cbxApplicationStats.Items.Add("已歸還");
-            cbxApplicationStats.Items.Add("取消");
+            cbxApplicationStats.Items.Add("全部"); // Index 0
+            cbxApplicationStats.Items.Add("預約"); // Index 1
+            cbxApplicationStats.Items.Add("出借中"); // Index 2
+            cbxApplicationStats.Items.Add("已歸還"); // Index 3
+            cbxApplicationStats.Items.Add("取消"); // Index 4
             cbxApplicationStats.SelectedIndex = 0;
             // Init Unit Cbx
             if (Actor.Instance.isSysAdmin())

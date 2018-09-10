@@ -66,6 +66,11 @@ namespace Ischool.Booking.Equipment
             }
         }    
 
+        public  string GetTeacherID()
+        {
+            return this._teacherID;
+        }
+
         /// <summary>
         /// 透過使用者登入帳號取得_loginID
         /// </summary>

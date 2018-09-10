@@ -49,6 +49,7 @@ FROM
 WHERE
     app.ref_equip_id = {0}
 	AND history.uid IS NOT NULL
+    AND history.borrow_time IS NOT NULL
 	AND history.return_time IS NULL
                 ", equipID);
 

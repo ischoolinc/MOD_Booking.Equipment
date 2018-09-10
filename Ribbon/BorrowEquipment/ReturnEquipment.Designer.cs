@@ -42,7 +42,7 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.tbxendTime = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbxEndTime = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.tbxReason = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbxStarTime = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -295,7 +295,7 @@
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel2.Controls.Add(this.tbxendTime);
+            this.groupPanel2.Controls.Add(this.tbxEndTime);
             this.groupPanel2.Controls.Add(this.labelX11);
             this.groupPanel2.Controls.Add(this.tbxReason);
             this.groupPanel2.Controls.Add(this.tbxStarTime);
@@ -345,20 +345,20 @@
             this.groupPanel2.TabIndex = 3;
             this.groupPanel2.Text = "出借紀錄";
             // 
-            // tbxendTime
+            // tbxEndTime
             // 
             // 
             // 
             // 
-            this.tbxendTime.Border.Class = "TextBoxBorder";
-            this.tbxendTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbxendTime.Enabled = false;
-            this.tbxendTime.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbxendTime.Location = new System.Drawing.Point(285, 75);
-            this.tbxendTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbxendTime.Name = "tbxendTime";
-            this.tbxendTime.Size = new System.Drawing.Size(145, 25);
-            this.tbxendTime.TabIndex = 11;
+            this.tbxEndTime.Border.Class = "TextBoxBorder";
+            this.tbxEndTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbxEndTime.Enabled = false;
+            this.tbxEndTime.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tbxEndTime.Location = new System.Drawing.Point(285, 75);
+            this.tbxEndTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbxEndTime.Name = "tbxEndTime";
+            this.tbxEndTime.Size = new System.Drawing.Size(145, 25);
+            this.tbxEndTime.TabIndex = 11;
             // 
             // labelX11
             // 
@@ -590,7 +590,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tbxBorrowTime;
         private DevComponents.DotNetBar.Controls.TextBoxX tbxApplyTime;
         private DevComponents.DotNetBar.Controls.TextBoxX tbxApplicant;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbxendTime;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbxEndTime;
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.ButtonX btnReturn;
         private DevComponents.DotNetBar.Controls.TextBoxX tbxPlace;

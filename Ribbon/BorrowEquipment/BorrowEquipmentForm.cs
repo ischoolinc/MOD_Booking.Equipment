@@ -48,13 +48,13 @@ namespace Ischool.Booking.Equipment
 
             if (actor.isSysAdmin())
             {
-                lbIdentity.Text = "設備預約模組管理者";
+                lbIdentity.Text = GetDescription.Get(typeof(EnumIdentity), EnumIdentity.ModuleAdmin.ToString()); // "設備預約模組管理者"
 
                 dicEquipments = DAO.Equipment.GetEquipments();
             }
             else if (actor.isUnitAdmin())
             {
-                lbIdentity.Text = "單位管理員";
+                lbIdentity.Text = GetDescription.Get(typeof(EnumIdentity), EnumIdentity.UnitAdmin.ToString()); // "單位管理員"
                 List<string> unitIDs = new List<string>();
                 foreach (DAO.UnitInfo unit in actor.getUnitAdminUnits())
                 {

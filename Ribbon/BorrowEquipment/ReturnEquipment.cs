@@ -8,12 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 using FISCA.UDT;
 using FISCA.Presentation.Controls;
+using K12.Data;
 
 namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
 {
     public partial class ReturnEquipment : UserControl, IEquipUserControl
     {
         private String equipID;
+
+        private string _identity;
 
         public ReturnEquipment()
         {
@@ -44,10 +47,10 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
             tbxCategory.Text = listEquipData[0].Category;
             tbxCompany.Text = listEquipData[0].Company;
             tbxModel.Text = listEquipData[0].ModelNo;
-            tbxPlace.Text = listEquipData[0].Place; 
+            tbxPlace.Text = listEquipData[0].Place;
             #endregion
 
-            // 出借紀錄
+            #region 申請資料
             DataTable dt = DAO.EquipIOHistory.GetBorrowData(equipID);
             if (dt.Rows.Count > 0)
             {
@@ -55,7 +58,7 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
                 tbxApplicant.Tag = "" + dt.Rows[0]["uid"]; // 設備借出歷程編號
                 tbxApplyTime.Text = "" + dt.Rows[0]["apply_date"];
                 tbxStarTime.Text = "" + dt.Rows[0]["start_time"];
-                tbxendTime.Text = "" + dt.Rows[0]["end_time"];
+                tbxEndTime.Text = "" + dt.Rows[0]["end_time"];
                 tbxBorrowTime.Text = "" + dt.Rows[0]["borrow_time"];
                 tbxReason.Text = "" + dt.Rows[0]["apply_reason"];
 
@@ -64,6 +67,16 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
             else
             {
                 btnReturn.Enabled = false;
+            }
+            #endregion
+
+            if (Actor.Instance.isSysAdmin())
+            {
+                this._identity = GetDescription.Get(typeof(EnumIdentity),EnumIdentity.ModuleAdmin.ToString());
+            }
+            else if (Actor.Instance.isUnitAdmin())
+            {
+                this._identity = GetDescription.Get(typeof(EnumIdentity), EnumIdentity.UnitAdmin.ToString());
             }
         }
 
@@ -76,7 +89,7 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
             tbxApplicant.Text = "";
             tbxApplyTime.Text = "";
             tbxStarTime.Text = "";
-            tbxendTime.Text = "";
+            tbxEndTime.Text = "";
             tbxBorrowTime.Text = "";
             tbxReason.Text = "";
         }
@@ -91,6 +104,8 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
                 try
                 {
                     DAO.EquipIOHistory.ReturnEquip("" + tbxApplicant.Tag);
+                    string logs = GetLogs().ToString();
+                    FISCA.LogAgent.ApplicationLog.Log("設備出借/歸還", "設備歸還", logs.ToString());
                     MsgBox.Show("設備歸還成功!");
                     SetVisible(false);
                 }
@@ -99,6 +114,33 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
                     MsgBox.Show(ex.Message);
                 }
             }
+        }
+
+        private StringBuilder GetLogs()
+        {
+            TeacherRecord tr = Teacher.SelectByID(Actor.Instance.GetTeacherID());
+
+            StringBuilder logs = new StringBuilder();
+            logs.AppendLine(string.Format(@"
+{0}「{1}」確認: 
+申請人「{2}」申請設備「{3}」歸還。
+設備基本資料:
+設備名稱「{3}」 
+設備類別「{4}」
+廠牌「{5}」
+型號「{6}」
+放置位置「{7}」
+申請資料:
+申請人「{2}」
+申請時間「{8}」
+預約使用時間「{9}」~「{10}」
+申請事由「{11}」
+借出時間「{12}」
+歸還時間「{13}」
+            ", this._identity, tr.Name, tbxApplicant.Text, tbxEquipName.Text, tbxCategory.Text, tbxCompany.Text, tbxModel.Text, tbxPlace.Text, tbxApplyTime.Text, tbxStarTime.Text, tbxEndTime.Text, tbxReason.Text, DateTime.Parse(tbxBorrowTime.Text).ToString("yyyy/MM/dd HH:mm"),lbTimeNow.Text));
+
+
+            return logs;
         }
     }
 }

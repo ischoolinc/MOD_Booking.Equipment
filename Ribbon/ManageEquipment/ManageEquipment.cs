@@ -27,7 +27,7 @@ namespace Ischool.Booking.Equipment
             // 1.確認使用者身分
             if (actor.isSysAdmin())
             {
-                lbIdentity.Text = "設備預約模組管理者";
+                lbIdentity.Text = GetDescription.Get(typeof(EnumIdentity), EnumIdentity.ModuleAdmin.ToString());  // "設備預約模組管理者"
 
                 // 2.載入管理的單位
                 AccessHelper access = new AccessHelper();
@@ -40,7 +40,7 @@ namespace Ischool.Booking.Equipment
             }
             else if (actor.isUnitAdmin())
             {
-                lbIdentity.Text = "單位管理員";
+                lbIdentity.Text = GetDescription.Get(typeof(EnumIdentity), EnumIdentity.UnitAdmin.ToString()); // "單位管理員"
 
                 // 2.載入管理的單位
                 List<DAO.UnitInfo> listUnit = actor.getUnitAdminUnits();

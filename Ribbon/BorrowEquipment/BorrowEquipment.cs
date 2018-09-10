@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FISCA.UDT;
 using FISCA.Presentation.Controls;
+using K12.Data;
 
 namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
 {
     public partial class BorrowEquipment : UserControl, IEquipUserControl
     {
         private String equipID;
+        private string _identity;
 
         public BorrowEquipment()
         {
@@ -36,6 +38,15 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
         {
             lbTimeNow.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
             ClearTbxData();
+
+            if (Actor.Instance.isSysAdmin())
+            {
+                this._identity = GetDescription.Get(typeof(EnumIdentity),EnumIdentity.ModuleAdmin.ToString());
+            }
+            else if (Actor.Instance.isUnitAdmin())
+            {
+                this._identity = GetDescription.Get(typeof(EnumIdentity), EnumIdentity.UnitAdmin.ToString());
+            }
 
             #region 設備基本資料
 
@@ -97,6 +108,8 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
                 try
                 {
                     DAO.EquipIOHistory.BorrowEquip("" + tbxApplicant.Tag);
+                    string logs = GetLogs().ToString();
+                    FISCA.LogAgent.ApplicationLog.Log("設備出借/歸還", "設備出借", logs.ToString());
                     MsgBox.Show("設備出借成功!");
                     SetVisible(false);
                 }
@@ -104,8 +117,33 @@ namespace Ischool.Booking.Equipment.Ribbon.BorrowEquipment
                 {
                     MsgBox.Show(ex.Message);
                 }
-                
             }
+        }
+
+        private StringBuilder GetLogs()
+        {
+            TeacherRecord tr = Teacher.SelectByID(Actor.Instance.GetTeacherID());
+
+            StringBuilder logs = new StringBuilder();
+            logs.AppendLine(string.Format(@"
+{0}「{1}」確認: 
+申請人「{2}」申請設備「{3}」出借。　
+設備基本資料:
+設備名稱「{3}」 
+設備類別「{4}」
+廠牌「{5}」 
+型號「{6}」 
+放置位置「{7}」 
+申請資料:
+申請人「{2}」 
+申請時間「{8}」
+預約使用時間「{9}」~「{10}」
+申請事由「{11}」
+借出時間「{12}」
+            ", this._identity, tr.Name, tbxApplicant.Text, tbxEquipName.Text,tbxCategory.Text,tbxCompany.Text,tbxModel.Text,tbxPlace.Text,tbxApplyTime.Text,tbxStarTime.Text,tbxEndTime.Text,tbxReason.Text, lbTimeNow.Text));
+
+
+            return logs;
         }
     }
 }

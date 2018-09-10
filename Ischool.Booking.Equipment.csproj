@@ -161,6 +161,7 @@
     <Compile Include="Ribbon\BorrowEquipment\BorrowEquipment.Designer.cs">
       <DependentUpon>BorrowEquipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ribbon\EnumIdentity.cs" />
     <Compile Include="Ribbon\EquipApplications\frmSearchApplication.cs">
       <SubType>Form</SubType>
     </Compile>
