@@ -59,7 +59,7 @@ namespace Ischool.Booking.Equipment
 
             #region Init UDT
             {
-                ConfigData cd = K12.Data.School.Configuration["設備預約模組載入設定"];
+                ConfigData cd = K12.Data.School.Configuration["設備預約模組載入設定Version_1008"];
 
                 bool checkUDT = false;
                 string name = "設備預約UDT是否已載入";
@@ -118,8 +118,6 @@ namespace Ischool.Booking.Equipment
             #endregion
 
             // 取得登入帳號與身分
-            //Actor actor = new Actor();
-            //string identity = Actor.Identity;
             Actor actor = Actor.Instance;
 
             // 建立設備預約分頁

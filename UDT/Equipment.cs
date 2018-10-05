@@ -62,6 +62,12 @@ namespace Ischool.Booking.Equipment.UDT
         public int DeadLine { get; set; }
 
         /// <summary>
+        /// 是否顯示
+        /// </summary>
+        [Field(Field = "is_able" , Indexed = false)]
+        public bool IsAble { get; set; }
+
+        /// <summary>
         /// 放置位置
         /// </summary>
         [Field(Field = "place", Indexed = false)]
