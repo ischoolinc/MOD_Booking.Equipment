@@ -14,12 +14,12 @@ C:\Users\User\source\repos\Loader(dev.sh_d)\Ischool.Booking.Equipment\obj\Debug\
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\bin\Debug\Ischool.Booking.Equipment.dll
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\bin\Debug\Ischool.Booking.Equipment.pdb
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\bin\Debug\DevComponents.TreeGX.dll
-D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csprojResolveAssemblyReference.cache
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.BookingEquipmentAdmin.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.Properties.Resources.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.Ribbon.BorrowEquipment.ReturnEquipment.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.BorrowEquipmentForm.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.Ribbon.BorrowEquipment.BorrowEquipment.resources
+D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.frmSearchApplication.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.ExportEquipmentForm.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.EditEquipmentForm.resources
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.ManageEquipment.resources
@@ -32,4 +32,3 @@ D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.csproj.CoreCompileInputs.cache
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.dll
 D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.pdb
-D:\Users\小金\Documents\github_ischool\MOD_Booking.Equipment\obj\Debug\Ischool.Booking.Equipment.frmSearchApplication.resources

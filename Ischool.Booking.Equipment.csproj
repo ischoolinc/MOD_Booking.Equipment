@@ -174,6 +174,7 @@
     <Compile Include="Ribbon\ExportEquipment\ExportEquipmentForm.Designer.cs">
       <DependentUpon>ExportEquipmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ribbon\FormEditMode.cs" />
     <Compile Include="Ribbon\ImportEquipment\ImportEquipmentData\ImportEquipmentData.cs" />
     <Compile Include="Ribbon\ImportEquipment\ImportEquipmentData\ImportEquipmentLog.cs" />
     <Compile Include="Ribbon\ImportEquipment\ValidationRule\FieldValidator\CheckInt.cs" />

@@ -115,7 +115,7 @@ ORDER BY
         /// <param name="deadline"></param>
         /// <param name="place"></param>
         /// <param name="unitID"></param>
-        public static void InsertUnitEquipment(string name,string category,string property,string company,string model,string status,string deadline,string place,string unitID)
+        public static void InsertUnitEquipment(string name,string category,string property,string company,string model,string status,string deadline,string place,string unitID,string isAble)
         {
             string sql = string.Format(@"
 INSERT INTO $ischool.booking.equipment(
@@ -130,6 +130,7 @@ INSERT INTO $ischool.booking.equipment(
     , create_time
     , created_by
     , ref_unit_id
+    , is_able
 )
 VALUES(
     '{0}'
@@ -143,8 +144,9 @@ VALUES(
     , '{8}'
     , '{9}'
     , {10}
+    , {11}
 )
-            ",name, category,property, company, model, status, deadline, place,DateTime.Now.ToShortDateString(),Actor.UserAccount,unitID);
+            ",name, category,property, company, model, status, deadline, place,DateTime.Now.ToShortDateString(),Actor.UserAccount,unitID, isAble);
 
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);
@@ -162,7 +164,7 @@ VALUES(
         /// <param name="place"></param>
         /// <param name="unitID"></param>
         /// <param name="equipID"></param>
-        public static void UpdateUnitEquipment(string name,string category,string propertyNo,string company,string model,string status,string deadline,string place,string unitID,string equipID)
+        public static void UpdateUnitEquipment(string name,string category,string propertyNo,string company,string model,string status,string deadline,string place,string unitID,string equipID,string isAble)
         {
             string sql = string.Format(@"
 UPDATE $ischool.booking.equipment
@@ -178,9 +180,10 @@ SET
     , create_time = '{8}'
     , created_by = '{9}'
     , ref_unit_id = {10}
+    , is_able = {12}
 WHERE
     uid ={11}
-            ",name,category,propertyNo,company,model,status,deadline,place,DateTime.Now.ToShortDateString(),Actor.UserAccount,unitID, equipID);
+            ",name,category,propertyNo,company,model,status,deadline,place,DateTime.Now.ToShortDateString(),Actor.UserAccount,unitID, equipID, isAble);
 
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);

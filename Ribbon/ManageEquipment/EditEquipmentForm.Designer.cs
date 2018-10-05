@@ -55,6 +55,7 @@
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.cbxCategory = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ckbxIsAble = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -251,7 +252,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(319, 244);
+            this.btnSave.Location = new System.Drawing.Point(321, 261);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -265,7 +266,7 @@
             this.btnLeave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLeave.BackColor = System.Drawing.Color.Transparent;
             this.btnLeave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLeave.Location = new System.Drawing.Point(400, 244);
+            this.btnLeave.Location = new System.Drawing.Point(402, 261);
             this.btnLeave.Name = "btnLeave";
             this.btnLeave.Size = new System.Drawing.Size(75, 23);
             this.btnLeave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -305,6 +306,7 @@
             // 
             this.cbxStatus.DisplayMember = "Text";
             this.cbxStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStatus.FormattingEnabled = true;
             this.cbxStatus.ItemHeight = 19;
             this.cbxStatus.Items.AddRange(new object[] {
@@ -364,11 +366,30 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // ckbxIsAble
+            // 
+            this.ckbxIsAble.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.ckbxIsAble.BackgroundStyle.Class = "";
+            this.ckbxIsAble.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ckbxIsAble.Checked = true;
+            this.ckbxIsAble.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbxIsAble.CheckValue = "Y";
+            this.ckbxIsAble.Location = new System.Drawing.Point(12, 229);
+            this.ckbxIsAble.Name = "ckbxIsAble";
+            this.ckbxIsAble.Size = new System.Drawing.Size(316, 23);
+            this.ckbxIsAble.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ckbxIsAble.TabIndex = 22;
+            this.ckbxIsAble.Text = "是否在WEB申請畫面上顯示";
+            // 
             // EditEquipmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 279);
+            this.ClientSize = new System.Drawing.Size(489, 296);
+            this.Controls.Add(this.ckbxIsAble);
             this.Controls.Add(this.cbxCategory);
             this.Controls.Add(this.labelX9);
             this.Controls.Add(this.cbxStatus);
@@ -391,6 +412,8 @@
             this.Controls.Add(this.tbxName);
             this.Controls.Add(this.labelX1);
             this.DoubleBuffered = true;
+            this.MaximumSize = new System.Drawing.Size(505, 335);
+            this.MinimumSize = new System.Drawing.Size(505, 335);
             this.Name = "EditEquipmentForm";
             this.Text = "EditEquipmentForm";
             this.Load += new System.EventHandler(this.EditEquipmentForm_Load);
@@ -427,5 +450,6 @@
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbxCategory;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Controls.CheckBoxX ckbxIsAble;
     }
 }

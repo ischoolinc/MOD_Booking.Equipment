@@ -13,7 +13,7 @@ namespace Ischool.Booking.Equipment
 {
     public partial class EditEquipmentForm : BaseForm
     {
-        private string _mode;
+        private FormEditMode _mode;
 
         private string _unitID;
 
@@ -24,15 +24,15 @@ namespace Ischool.Booking.Equipment
         /// </summary>
         private List<string> listPropertyNo;
 
-        public EditEquipmentForm(string mode,string unitID,string equipID)
+        public EditEquipmentForm(FormEditMode mode,string unitID,string equipID)
         {
             InitializeComponent();
 
-            _mode = mode;
+            this._mode = mode;
 
-            _unitID = unitID;
+            this._unitID = unitID;
 
-            _equipID = equipID;
+            this._equipID = equipID;
         }
 
         private void EditEquipmentForm_Load(object sender, EventArgs e)
@@ -52,11 +52,11 @@ namespace Ischool.Booking.Equipment
             }
 
 
-            if (_mode == "新增")
+            if (_mode == FormEditMode.Add)
             {
                 
             }
-            else if (_mode == "修改")
+            else if (_mode == FormEditMode.Update)
             {
                 
                 List<UDT.Equipment>EquipInfo = access.Select<UDT.Equipment>(string.Format("uid = {0}",_equipID));
@@ -69,6 +69,7 @@ namespace Ischool.Booking.Equipment
                 cbxStatus.Text = EquipInfo[0].Status;
                 tbxDeadLine.Text = "" + EquipInfo[0].DeadLine;
                 tbxPlace.Text = EquipInfo[0].Place;
+                ckbxIsAble.Checked = EquipInfo[0].IsAble;
             }
 
             // Init CbxCategory Items
@@ -84,12 +85,12 @@ namespace Ischool.Booking.Equipment
             // 資料驗證
             if (DataVerify())
             {
-                if (_mode == "新增")
+                if (_mode == FormEditMode.Add)
                 {
                     try
                     {
                         DAO.Equipment.InsertUnitEquipment(tbxName.Text.Trim(), cbxCategory.Text.Trim(),tbxPropertyNo.Text.Trim(), tbxCompany.Text.Trim(), 
-                            tbxModelNo.Text.Trim(), cbxStatus.Text.Trim(), tbxDeadLine.Text.Trim(), tbxPlace.Text.Trim(), _unitID);
+                            tbxModelNo.Text.Trim(), cbxStatus.SelectedItem.ToString(), tbxDeadLine.Text.Trim(), tbxPlace.Text.Trim(), _unitID, ckbxIsAble.Checked.ToString());
                         MsgBox.Show("儲存成功!");
                         this.Close();
                     }
@@ -99,12 +100,12 @@ namespace Ischool.Booking.Equipment
                     }
 
                 }
-                else if (_mode == "修改")
+                else if (_mode == FormEditMode.Update)
                 {
                     try
                     {
                         DAO.Equipment.UpdateUnitEquipment(tbxName.Text.Trim(), cbxCategory.Text.Trim(),tbxPropertyNo.Text.Trim(),tbxCompany.Text.Trim(),
-                            tbxModelNo.Text.Trim(),cbxStatus.Text.Trim(),tbxDeadLine.Text.Trim(),tbxPlace.Text.Trim(),_unitID,_equipID);
+                            tbxModelNo.Text.Trim(), cbxStatus.SelectedItem.ToString(), tbxDeadLine.Text.Trim(),tbxPlace.Text.Trim(),_unitID,_equipID,ckbxIsAble.Checked.ToString());
                         MsgBox.Show("儲存成功!");
                         this.Close();
                     }

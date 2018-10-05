@@ -75,6 +75,7 @@ namespace Ischool.Booking.Equipment
                 dgvrow.Cells[index++].Value = "" + row["company"];
                 dgvrow.Cells[index++].Value = "" + row["model_no"];
                 dgvrow.Cells[index++].Value = "" + row["status"];
+                dgvrow.Cells[index++].Value = ("" + row["is_able"]) == "true" ? "是" : "否";
                 dgvrow.Cells[index++].Value = "" + row["deadline"];
                 dgvrow.Cells[index++].Value = "" + row["place"];
                 dgvrow.Cells[index++].Value = "" + row["created_by"];
@@ -94,7 +95,7 @@ namespace Ischool.Booking.Equipment
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            EditEquipmentForm form = new EditEquipmentForm("新增", dicUnit[cbxUnit.Text],"");
+            EditEquipmentForm form = new EditEquipmentForm(FormEditMode.Add, dicUnit[cbxUnit.Text],"");
             form.Text = "新增設備";
             form.FormClosed += delegate 
             {
@@ -106,7 +107,7 @@ namespace Ischool.Booking.Equipment
         private void updateBtn_Click(object sender, EventArgs e)
         {
             string equipID = "" + dataGridViewX1.SelectedRows[0].Tag;
-            EditEquipmentForm form = new EditEquipmentForm("修改", dicUnit[cbxUnit.Text], equipID);
+            EditEquipmentForm form = new EditEquipmentForm(FormEditMode.Update, dicUnit[cbxUnit.Text], equipID);
             form.Text = "修改設備";
             form.FormClosed += delegate
             {
