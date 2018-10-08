@@ -9,7 +9,7 @@ namespace Ischool.Booking.Equipment
 {
     enum EnumIdentity
     {
-        [Description("設備預約模組管理者")]
+        [Description("設備預約管理員")]
         ModuleAdmin,
         [Description("單位管理員")]
         UnitAdmin

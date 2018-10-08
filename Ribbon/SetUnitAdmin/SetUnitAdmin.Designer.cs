@@ -72,7 +72,7 @@
             this.identityLb.Name = "identityLb";
             this.identityLb.Size = new System.Drawing.Size(137, 23);
             this.identityLb.TabIndex = 1;
-            this.identityLb.Text = "設備預約模組管理者";
+            this.identityLb.Text = "設備預約管理員";
             // 
             // unitCbx
             // 

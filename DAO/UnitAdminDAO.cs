@@ -103,7 +103,7 @@ SELECT
     , {6}
 FROM
     insert_login
-                    ", unitID, teacherID, teacherAccount, loginID, createTime, createdBy,Program._roleID);
+                    ", unitID, teacherID, teacherAccount, loginID, createTime, createdBy,Program._roleUnitID);
             }
             else
             {
@@ -133,7 +133,7 @@ INSERT INTO _lr_belong(
 SELECT
     {3}
     , {6}
-                    ", teacherAccount, unitID, teacherID, loginID, createTime, createdBy,Program._roleID);
+                    ", teacherAccount, unitID, teacherID, loginID, createTime, createdBy,Program._roleUnitID);
             }
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);

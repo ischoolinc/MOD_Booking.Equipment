@@ -61,9 +61,9 @@ SELECT * FROM insert_role
                 {
                     Program._roleAdminID = "" + dt.Rows[0]["id"];
                 }
-                if (roleName == Program._roleName)
+                if (roleName == Program._roleUnitName)
                 {
-                    Program._roleID = "" + dt.Rows[0]["id"];
+                    Program._roleUnitID = "" + dt.Rows[0]["id"];
                 }
                 return true;
             }
@@ -77,7 +77,7 @@ SELECT * FROM insert_role
         /// 更新角色權限
         /// </summary>
         /// <param name="roleID"></param>
-        public static void UpdateRole(string roleID)
+        public static void UpdateRole(string roleID,string permission)
         {
             string sql = string.Format(@"
 UPDATE 
@@ -86,7 +86,7 @@ SET
     permission = '{0}'
 WHERE
     id = {1}
-            ",Program._permission,roleID);
+            ", permission, roleID);
 
             UpdateHelper up = new UpdateHelper();
             up.Execute(sql);

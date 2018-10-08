@@ -13,9 +13,17 @@ namespace Ischool.Booking.Equipment
         private bool _isUnitAdmin = false;
         // 登入帳號對應到的老師系統編號
         private string _teacherID;
-
+        private QueryHelper _qh = new QueryHelper();
         private List<DAO.UnitInfo> _units;
         private static Actor _actor;
+
+        public static string UserAccount
+        {
+            get
+            {
+                return FISCA.Authentication.DSAServices.UserAccount.Replace("'", "''");
+            }
+        }
 
         public Actor()
         {
@@ -25,6 +33,8 @@ namespace Ischool.Booking.Equipment
 
             // 2. 判斷在各單位的角色
             CheckUnitAdmin();
+
+            GetTeacherDataByAccount();
         }
 
         public static Actor Instance
@@ -38,43 +48,7 @@ namespace Ischool.Booking.Equipment
                 return _actor;
             }
         }
-
-        /// <summary>
-        /// 是否為系統管理員
-        /// </summary>
-        /// <returns></returns>
-        public bool isSysAdmin()
-        {
-            return this._isSysAdmin;
-        }
-        /// <summary>
-        /// 是否為單位管理員
-        /// </summary>
-        /// <returns></returns>
-        public bool isUnitAdmin()
-        {
-            return this._isUnitAdmin;
-        }
-        /// <summary>
-        /// 取得使用者登入帳號
-        /// </summary>
-        public static string UserAccount
-        {
-            get
-            {
-                return FISCA.Authentication.DSAServices.UserAccount.Replace("'", "''");
-            }
-        }    
-
-        public  string GetTeacherID()
-        {
-            return this._teacherID;
-        }
-
-        /// <summary>
-        /// 透過使用者登入帳號取得_loginID
-        /// </summary>
-        /// <returns></returns>
+        
         public static string GetLoginIDByAccount(string targetAccount)
         {
             string loginID;
@@ -94,33 +68,57 @@ namespace Ischool.Booking.Equipment
             return loginID;
         }
 
+        public bool isSysAdmin()
+        {
+            return this._isSysAdmin;
+        }
+
+        public bool isUnitAdmin()
+        {
+            return this._isUnitAdmin;
+        }
+
+        public string GetTeacherID()
+        {
+            return this._teacherID;
+        }
+
         private void CheckSysAdmin()
         {
             string sql = string.Format(@"
 SELECT 
-    teacher.*
+    _login.*
 FROM
-    teacher
-    LEFT OUTER JOIN _login
-        ON teacher.st_login_name = _login.login_name
+     _login
     LEFT OUTER JOIN _lr_belong
         ON _login.id = _lr_belong._login_id
 WHERE
-    teacher.st_login_name = '{0}'
+    _login.login_name = '{0}'
     AND _lr_belong._role_id = {1}
-                ",Actor.UserAccount,Program._roleAdminID);
+                ", Actor.UserAccount,Program._roleAdminID);
 
-            QueryHelper qh = new QueryHelper();
-            DataTable dt = qh.Select(sql);
+            DataTable dt = this._qh.Select(sql);
 
             this._isSysAdmin = (dt.Rows.Count > 0);
+        }
+
+        private void GetTeacherDataByAccount()
+        {
+            string sql = string.Format(@"
+SELECT 
+    *
+FROM
+    teacher
+WHERE
+    teacher.st_login_name = '{0}'
+            ",Actor.UserAccount);
+
+            DataTable dt = this._qh.Select(sql);
             this._teacherID = (dt.Rows.Count > 0 ? dt.Rows[0]["id"].ToString() : "");
         }
 
         private void CheckUnitAdmin()
         {
-            QueryHelper qh = new QueryHelper();
-
             string sql = string.Format(@"
 SELECT 
     unit.name AS unit_name
@@ -133,16 +131,15 @@ WHERE
     unit_admin.account = '{0}'
                 ", Actor.UserAccount);
 
-            DataTable dt = qh.Select(sql);
+            DataTable dt = this._qh.Select(sql);
+
+
             foreach (DataRow row in dt.Rows)
             {
                 string unitID = "" + row["ref_unit_id"];
                 string unitName = "" + row["unit_name"];
-                //bool isBoss = ("" + row["is_boss"]) == "true" ? true : false;
-                //string teacherID = "" + row["ref_teacher_id"];
                 DAO.UnitInfo unitRole = new DAO.UnitInfo(unitID, unitName);
                 this._isUnitAdmin = true;
-
                 this._units.Add(unitRole);
             }
         }

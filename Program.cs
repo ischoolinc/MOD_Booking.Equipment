@@ -21,15 +21,15 @@ namespace Ischool.Booking.Equipment
         /// <summary>
         /// 設備預約模組專用角色ID
         /// </summary>
-        static public string _roleID;
+        static public string _roleUnitID;
         /// <summary>
         /// 設備預約模組專用角色名稱
         /// </summary>
-        public static string _roleName = "設備預約模組專用";
+        public static string _roleUnitName = "設備預約單位管理員";
         /// <summary>
         /// 設備預約管理者角色名稱
         /// </summary>
-        public static string _roleAdminName = "設備預約管理者";
+        public static string _roleAdminName = "設備預約管理員";
         /// <summary>
         /// 設備預約管理者專用角色ID
         /// </summary>
@@ -37,7 +37,7 @@ namespace Ischool.Booking.Equipment
         /// <summary>
         /// 設備預約模組角色權限
         /// </summary>
-        public static string _permission = @"
+        public static string _adminPermission = @"
 <Permissions>
 <Feature Code=""449AADA3-79B1-4062-8783-767DC9EEAA30"" Permission=""Execute""/>
 <Feature Code=""DF736220-FB78-4F32-837D-87276F2B8421"" Permission=""Execute""/>
@@ -49,6 +49,17 @@ namespace Ischool.Booking.Equipment
 <Feature Code=""CC10DD70-5DF0-421C-9234-0A2FD0BC0B1F"" Permission=""Execute""/>
 </Permissions>
 ";
+        public static string _unitPermission = @"
+<Permissions>
+<Feature Code=""449AADA3-79B1-4062-8783-767DC9EEAA30"" Permission=""Execute""/>
+<Feature Code=""DF736220-FB78-4F32-837D-87276F2B8421"" Permission=""Execute""/>
+<Feature Code=""1BE6FCD7-F008-4E17-92C7-113ABAD7BEDF"" Permission=""Execute""/>
+<Feature Code=""5EEC6C9D-40AD-432E-BC25-EEFF91A9438D"" Permission=""Execute""/>
+<Feature Code=""A5E99F9B-A6AB-40A5-BB02-5BB8674C69F0"" Permission=""Execute""/>
+<Feature Code=""CC10DD70-5DF0-421C-9234-0A2FD0BC0B1F"" Permission=""Execute""/>
+</Permissions>
+";
+
 
         [MainMethod()]
         static public void Main()
@@ -94,25 +105,25 @@ namespace Ischool.Booking.Equipment
                 // 如果管理者角色不存在，建立角色並取回角色ID
                 if (!DAO.Role.CheckIsRoleExist(_roleAdminName))
                 {
-                    _roleAdminID = DAO.Role.InsertRole(_roleAdminName,"",_permission);
+                    _roleAdminID = DAO.Role.InsertRole(_roleAdminName,"",_adminPermission);
                 }
                 else // 更新角色權限
                 {
-                    DAO.Role.UpdateRole(_roleAdminID);
+                    DAO.Role.UpdateRole(_roleAdminID,_adminPermission);
                 }
             }
             #endregion
 
-            #region 建立設備預約專用腳色
+            #region 建立設備預約單位管理員角色
             {
                 // 如果專用角色不存在，建立角色並取回角色ID
-                if (!DAO.Role.CheckIsRoleExist(_roleName))
+                if (!DAO.Role.CheckIsRoleExist(_roleUnitName))
                 {
-                    _roleID = DAO.Role.InsertRole(_roleName,"",_permission);   
+                    _roleUnitID = DAO.Role.InsertRole(_roleUnitName,"", _unitPermission);   
                 }
                 else // 更新角色權限
                 {
-                    DAO.Role.UpdateRole(_roleID);
+                    DAO.Role.UpdateRole(_roleUnitID, _unitPermission);
                 }
             }
             #endregion
@@ -146,16 +157,8 @@ namespace Ischool.Booking.Equipment
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定管理單位"].Enable = Permissions.設定管理單位權限;
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定管理單位"].Click += delegate
                 {
-                    if (actor.isSysAdmin())
-                    {
-                        ManagementUnit form = new ManagementUnit();
-                        form.ShowDialog();
-                    }
-                    else
-                    {
-                        MsgBox.Show("此帳號沒有設定設備管理單位權限");
-                    }
-
+                    ManagementUnit form = new ManagementUnit();
+                    form.ShowDialog();
                 };
                 #endregion
 
@@ -163,15 +166,8 @@ namespace Ischool.Booking.Equipment
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定單位管理員"].Enable = Permissions.設定單位管理員權限;
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定單位管理員"].Click += delegate
                 {
-                    if (actor.isSysAdmin())
-                    {
-                        SetUnitAdmin form = new SetUnitAdmin();
-                        form.ShowDialog();
-                    }
-                    else
-                    {
-                        MsgBox.Show("此帳號沒有設定設備單位管理員權限");
-                    }
+                    SetUnitAdmin form = new SetUnitAdmin();
+                    form.ShowDialog();
                 };
                 #endregion
 
@@ -179,15 +175,8 @@ namespace Ischool.Booking.Equipment
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設備管理"].Enable = Permissions.管理設備權限;
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設備管理"].Click += delegate
                 {
-                    if (actor.isSysAdmin() || actor.isUnitAdmin())
-                    {
-                        ManageEquipment form = new ManageEquipment();
-                        form.ShowDialog();
-                    }
-                    else
-                    {
-                        MsgBox.Show("此帳號沒有管理設備權限");
-                    }
+                    ManageEquipment form = new ManageEquipment();
+                    form.ShowDialog();
                 };
                 #endregion
 
@@ -197,15 +186,8 @@ namespace Ischool.Booking.Equipment
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯出"]["匯出設備清單"].Enable = Permissions.匯出設備清單權限;
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯出"]["匯出設備清單"].Click += delegate
                 {
-                    if (actor.isSysAdmin() || actor.isUnitAdmin())
-                    {
-                        ExportEquipmentForm form = new ExportEquipmentForm();
-                        form.ShowDialog();
-                    }
-                    else
-                    {
-                        MsgBox.Show("此帳號沒有匯出設備清單權限");
-                    }
+                    ExportEquipmentForm form = new ExportEquipmentForm();
+                    form.ShowDialog();
                 };
                 #endregion
 
@@ -213,14 +195,7 @@ namespace Ischool.Booking.Equipment
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯入"]["匯入設備清單"].Enable = Permissions.匯入設備清單權限;
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["匯入"]["匯入設備清單"].Click += delegate
                 {
-                    if (actor.isSysAdmin() || actor.isUnitAdmin())
-                    {
-                        new ImportEquipmentData().Execute();
-                    }
-                    else
-                    {
-                        MsgBox.Show("此帳號沒有匯入設備清單權限");
-                    }
+                    new ImportEquipmentData().Execute();
                 };
                 #endregion
 
@@ -228,15 +203,8 @@ namespace Ischool.Booking.Equipment
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["報表"]["統計設備使用狀況"].Enable = Permissions.統計設備使用狀況權限;
                 MotherForm.RibbonBarItems["設備預約", "資料統計"]["報表"]["統計設備使用狀況"].Click += delegate
                 {
-                    if (actor.isSysAdmin() || actor.isUnitAdmin())
-                    {
-                        StatisticalTableForm form = new StatisticalTableForm();
-                        form.ShowDialog();
-                    }
-                    else
-                    {
-                        MsgBox.Show("此帳號沒有列印報表權限");
-                    }
+                    StatisticalTableForm form = new StatisticalTableForm();
+                    form.ShowDialog();
                 };
                 #endregion
 
@@ -247,14 +215,7 @@ namespace Ischool.Booking.Equipment
                     MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["查詢出借紀錄"].Enable = Permissions.查詢出借紀錄權限;
                     MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["查詢出借紀錄"].Click += delegate
                     {
-                        if (actor.isSysAdmin() || actor.isUnitAdmin())
-                        {
-                            (new frmSearchApplication()).ShowDialog();
-                        }
-                        else
-                        {
-                            MsgBox.Show("此帳號沒有設備出借權限");
-                        }
+                        (new frmSearchApplication()).ShowDialog();
                     };
                 }
                 #endregion
@@ -263,15 +224,8 @@ namespace Ischool.Booking.Equipment
                 MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["設備出借/歸還"].Enable = Permissions.設備出借歸還權限;
                 MotherForm.RibbonBarItems["設備預約", "設備出借作業"]["設備出借/歸還"].Click += delegate
                 {
-                    if (actor.isSysAdmin() || actor.isUnitAdmin())
-                    {
-                        BorrowEquipmentForm form = new BorrowEquipmentForm();
-                        form.ShowDialog();
-                    }
-                    else
-                    {
-                        MsgBox.Show("此帳號沒有設備出借權限");
-                    }
+                    BorrowEquipmentForm form = new BorrowEquipmentForm();
+                    form.ShowDialog();
                 };
                 #endregion
             }
