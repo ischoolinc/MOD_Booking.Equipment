@@ -10,6 +10,9 @@ namespace Ischool.Booking.Equipment.DAO
 {
     class UnitAdminDAO
     {
+        private static QueryHelper _qh = new QueryHelper();
+        private static UpdateHelper _up = new UpdateHelper();
+
         /// <summary>
         /// 取得尚未指定模組管理員與在該單位尚未指定管理員身分的老師清單
         /// </summary>
@@ -19,30 +22,45 @@ namespace Ischool.Booking.Equipment.DAO
             string sql = string.Format(@"
 SELECT
     teacher.*
-FROM    
+FROM
     teacher
     LEFT OUTER JOIN $ischool.booking.equip_unit_admin AS unit_admin
         ON unit_admin.ref_teacher_id = teacher.id
-        AND unit_admin.ref_unit_id = {1}
-    LEFT OUTER JOIN(
-        SELECT
-            _login.login_name
-        FROM
-            _login
-            LEFT OUTER JOIN _lr_belong
-                ON _login.id = _lr_belong._login_id
-        WHERE
-            _lr_belong._role_id = {0}
-    ) target_login
-        ON teacher.st_login_name = target_login.login_name
+        AND unit_admin.ref_unit_id = {0}
 WHERE
     unit_admin.uid IS NULL
-    AND target_login.login_name IS NULL
     AND teacher.status = 1
-                ", Program._roleAdminID, unitID);
+            ",unitID);
 
-            QueryHelper qh = new QueryHelper();
-            DataTable dt = qh.Select(sql);
+            #region old sql
+//            string sql = string.Format(@"
+//SELECT
+//    teacher.*
+//FROM    
+//    teacher
+//    LEFT OUTER JOIN $ischool.booking.equip_unit_admin AS unit_admin
+//        ON unit_admin.ref_teacher_id = teacher.id
+//        AND unit_admin.ref_unit_id = {1}
+//    LEFT OUTER JOIN(
+//        SELECT
+//            _login.login_name
+//        FROM
+//            _login
+//            LEFT OUTER JOIN _lr_belong
+//                ON _login.id = _lr_belong._login_id
+//        WHERE
+//            _lr_belong._role_id = {0}
+//    ) target_login
+//        ON teacher.st_login_name = target_login.login_name
+//WHERE
+//    unit_admin.uid IS NULL
+//    AND target_login.login_name IS NULL
+//    AND teacher.status = 1
+//                ", Program._roleAdminID, unitID); 
+            #endregion
+
+            //QueryHelper qh = new QueryHelper();
+            DataTable dt = UnitAdminDAO._qh.Select(sql);
             return dt;
         }
 
@@ -135,8 +153,8 @@ SELECT
     , {6}
                     ", teacherAccount, unitID, teacherID, loginID, createTime, createdBy,Program._roleUnitID);
             }
-            UpdateHelper up = new UpdateHelper();
-            up.Execute(sql);
+            //UpdateHelper up = new UpdateHelper();
+            UnitAdminDAO._up.Execute(sql);
             
         }
 
@@ -162,8 +180,8 @@ WHERE
     unit_admin.ref_unit_id = {0}
             ",unitID);
 
-            QueryHelper qh = new QueryHelper();
-            DataTable dt = qh.Select(sql);
+            //QueryHelper qh = new QueryHelper();
+            DataTable dt = UnitAdminDAO._qh.Select(sql);
 
             return dt;
         }
@@ -182,8 +200,8 @@ WHERE
     uid = {0}
                     ", unitAdminID);
 
-            UpdateHelper up = new UpdateHelper();
-            up.Execute(sql);
+            //UpdateHelper up = new UpdateHelper();
+            UnitAdminDAO._up.Execute(sql);
         }
     }
 }
