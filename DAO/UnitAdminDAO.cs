@@ -59,7 +59,6 @@ WHERE
 //                ", Program._roleAdminID, unitID); 
             #endregion
 
-            //QueryHelper qh = new QueryHelper();
             DataTable dt = UnitAdminDAO._qh.Select(sql);
             return dt;
         }
@@ -121,7 +120,7 @@ SELECT
     , {6}
 FROM
     insert_login
-                    ", unitID, teacherID, teacherAccount, loginID, createTime, createdBy,Program._roleUnitID);
+                    ", unitID, teacherID, teacherAccount, loginID, createTime, createdBy,Program._roleUnitAdminID);
             }
             else
             {
@@ -151,9 +150,8 @@ INSERT INTO _lr_belong(
 SELECT
     {3}
     , {6}
-                    ", teacherAccount, unitID, teacherID, loginID, createTime, createdBy,Program._roleUnitID);
+                    ", teacherAccount, unitID, teacherID, loginID, createTime, createdBy,Program._roleUnitAdminID);
             }
-            //UpdateHelper up = new UpdateHelper();
             UnitAdminDAO._up.Execute(sql);
             
         }
@@ -180,7 +178,6 @@ WHERE
     unit_admin.ref_unit_id = {0}
             ",unitID);
 
-            //QueryHelper qh = new QueryHelper();
             DataTable dt = UnitAdminDAO._qh.Select(sql);
 
             return dt;
@@ -190,17 +187,25 @@ WHERE
         /// 刪除單位管理員
         /// </summary>
         /// <param name="unitAdminID"></param>
-        public static void DeleteUnitAdmin(string unitAdminID)
+        public static void DeleteUnitAdmin(string unitAdminID,string loginID)
         {
             string sql = string.Format(@"
+WITH delete_unit_admin AS(
+    DELETE
+    FROM
+        $ischool.booking.equip_unit_admin
+    WHERE
+        uid = {0}    
+)
 DELETE
 FROM
-    $ischool.booking.equip_unit_admin
+    _lr_belong
 WHERE
-    uid = {0}
-                    ", unitAdminID);
+    _login_id = {1}
+    AND _role_id = {2}
 
-            //UpdateHelper up = new UpdateHelper();
+                    ", unitAdminID, loginID ,Program._roleUnitAdminID);
+
             UnitAdminDAO._up.Execute(sql);
         }
     }

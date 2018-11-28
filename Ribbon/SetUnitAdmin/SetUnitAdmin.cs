@@ -82,11 +82,13 @@ namespace Ischool.Booking.Equipment
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            //int rowIndex = dataGridViewX1.SelectedRows[0].Index;
             int rowIndex = dataGridViewX1.SelectedCells[0].RowIndex;
+
             if (rowIndex > -1)
             {
                 string teacherName = "" + dataGridViewX1.Rows[rowIndex].Cells[0].Value;
+                string teacherAccount = "" + dataGridViewX1.Rows[rowIndex].Cells[1].Value;
+                string loginID = Actor.GetLoginIDByAccount(teacherAccount);
 
                 DialogResult result = MsgBox.Show(string.Format("確定是否刪除{0}老師單位管理員身分?", teacherName), "警告", MessageBoxButtons.YesNo);
 
@@ -96,7 +98,7 @@ namespace Ischool.Booking.Equipment
                 {
                     try
                     {
-                        DAO.UnitAdminDAO.DeleteUnitAdmin(unitAdminID);
+                        DAO.UnitAdminDAO.DeleteUnitAdmin(unitAdminID, loginID);
                         MsgBox.Show("刪除成功!");
                         ReloadDataGridView();
                     }

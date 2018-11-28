@@ -21,11 +21,11 @@ namespace Ischool.Booking.Equipment
         /// <summary>
         /// 設備預約模組專用角色ID
         /// </summary>
-        static public string _roleUnitID;
+        static public string _roleUnitAdminID;
         /// <summary>
         /// 設備預約模組專用角色名稱
         /// </summary>
-        public static string _roleUnitName = "設備預約單位管理員";
+        public static string _roleUnitAdminName = "設備預約單位管理員";
         /// <summary>
         /// 設備預約管理者角色名稱
         /// </summary>
@@ -49,7 +49,7 @@ namespace Ischool.Booking.Equipment
 <Feature Code=""CC10DD70-5DF0-421C-9234-0A2FD0BC0B1F"" Permission=""Execute""/>
 </Permissions>
 ";
-        public static string _unitPermission = @"
+        public static string _unitAdminPermission = @"
 <Permissions>
 <Feature Code=""449AADA3-79B1-4062-8783-767DC9EEAA30"" Permission=""Execute""/>
 <Feature Code=""DF736220-FB78-4F32-837D-87276F2B8421"" Permission=""Execute""/>
@@ -117,13 +117,13 @@ namespace Ischool.Booking.Equipment
             #region 建立設備預約單位管理員角色
             {
                 // 如果專用角色不存在，建立角色並取回角色ID
-                if (!DAO.Role.CheckIsRoleExist(_roleUnitName))
+                if (!DAO.Role.CheckIsRoleExist(_roleUnitAdminName))
                 {
-                    _roleUnitID = DAO.Role.InsertRole(_roleUnitName,"", _unitPermission);   
+                    _roleUnitAdminID = DAO.Role.InsertRole(_roleUnitAdminName,"", _unitAdminPermission);   
                 }
                 else // 更新角色權限
                 {
-                    DAO.Role.UpdateRole(_roleUnitID, _unitPermission);
+                    DAO.Role.UpdateRole(_roleUnitAdminID, _unitAdminPermission);
                 }
             }
             #endregion

@@ -61,9 +61,9 @@ SELECT * FROM insert_role
                 {
                     Program._roleAdminID = "" + dt.Rows[0]["id"];
                 }
-                if (roleName == Program._roleUnitName)
+                if (roleName == Program._roleUnitAdminName)
                 {
-                    Program._roleUnitID = "" + dt.Rows[0]["id"];
+                    Program._roleUnitAdminID = "" + dt.Rows[0]["id"];
                 }
                 return true;
             }
