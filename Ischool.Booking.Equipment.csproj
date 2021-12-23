@@ -303,6 +303,7 @@
     <Content Include="Library\SmartSchool.Customization.PlugIn.xml" />
     <Content Include="Library\SmartSchool.ErrorReporting.dll" />
     <Content Include="Library\SmartSchool.ErrorReporting.xml" />
+    <Content Include="Resources\03.png" />
     <None Include="Resources\barcode_zoom_128.png" />
     <None Include="Resources\barcode_ok_128.png" />
     <None Include="Resources\meeting_config_64.png" />

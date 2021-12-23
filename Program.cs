@@ -132,10 +132,22 @@ namespace Ischool.Booking.Equipment
             Actor actor = Actor.Instance;
 
             // 建立設備預約分頁
-            MotherForm.AddPanel(BookingEquipmentAdmin.Instance);
+            //MotherForm.AddPanel(BookingEquipmentAdmin.Instance);
 
             #region 設備預約
             {
+                //2021-12-15 Cynthia 因原先操作指南無法在x64版本上作為背景載入，故參考俊威的意見，將操作指南另外用一個button點擊開啟。
+                MotherForm.RibbonBarItems["設備預約", "使用說明"]["操作指南"].Image = Properties.Resources._03;
+                MotherForm.RibbonBarItems["設備預約", "使用說明"]["操作指南"].Size = RibbonBarButton.MenuButtonSize.Large;
+                #region 操作指南
+                {
+                    MotherForm.RibbonBarItems["設備預約", "使用說明"]["操作指南"].Click += delegate
+                    {
+                        System.Diagnostics.Process.Start("https://sites.google.com/ischool.com.tw/booking-equipment/%E9%A6%96%E9%A0%81");
+                    };
+                }
+                #endregion
+
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定管理單位"].Size = RibbonBarButton.MenuButtonSize.Medium;
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定管理單位"].Image = Properties.Resources.meeting_config_64;
                 MotherForm.RibbonBarItems["設備預約", "基本設定"]["設定單位管理員"].Size = RibbonBarButton.MenuButtonSize.Medium;
